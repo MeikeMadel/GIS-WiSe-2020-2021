@@ -1,0 +1,585 @@
+h1 {
+    color:beige; 
+    font-weight: 700px;
+    font-size: 200px;
+    text-align: center;
+    letter-spacing: -17px;
+    margin-top: 0px;
+    transition: color 4s ease-in-out;
+}
+
+h1:hover{
+    color: black;
+}
+
+header{
+    background-color: brown;
+    margin-top: -8px;
+    border-bottom-left-radius: 450px;
+    border-bottom-right-radius: 450px;
+    padding: 0px 65px 20px 65px;
+}
+
+.wrapper{
+    width: 800px;
+    margin: 0px auto;
+}
+
+
+body {
+    background-image: url(bg.png);
+    font-family: sans-serif; 
+}
+
+h1 + p { 
+    color: beige;
+    font-size: 26px;
+    letter-spacing: -1px;
+    word-spacing: -2px;
+    margin-left: 50%;
+    margin-top: -150px;
+    
+}
+
+h2, h3{
+    color: brown;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.navigation {
+    background-color: black;
+    width: 26%;
+    height: 18px;
+    right: 7%;
+    text-align: center;
+    position: fixed;
+}
+
+nav td{
+    border-right: 1px solid white;
+    padding-right: 2px;
+}
+
+#schwarze-Linie{
+    border-right: 1px solid black;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+
+table a:hover {
+    color:brown;
+}
+
+video,audio {
+    width: 100%;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.aktuelle-Seite{
+color: brown;
+}
+
+main {
+    margin-top: 60px;
+}
+
+nav img{
+    margin: 0px auto;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-Facebook, .icon-Instagram{
+    margin-left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: brown;
+    border-radius: 4px;
+    transition: background-color 1s ease-in-out;
+}
+
+
+.icon-Facebook:hover, .icon-Instagram:hover{
+    background-color: beige;
+    border-radius: 4px;
+}
+
+
+audio[src$="wav"]{
+    width: 100%;
+    border: 2px solid grey;
+    margin: 0px auto;
+    margin-bottom: 80px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 10px grey;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+audio:hover{
+    border: 2px solid maroon;
+    box-shadow: 7px 7px 10px maroon;
+}
+
+img[src="BildMädchen.jpg"]{
+    width: 100%;
+    height: 500px;
+    margin: 0px auto;
+}
+
+div>img{
+    width: 100%;
+    height: 800px;
+    border: 7px dotted maroon;
+    margin: 0px auto;
+    padding: 4px;
+}
+
+.Bildvonmir {
+    border-radius: 30px;
+    width: 30%;
+    height: 30%;
+    float: right;
+    margin-right: 30px;
+}
+
+.ueber-mich{
+    font-size: 20px;
+    color: grey;
+}
+
+div ~ table {
+    color: grey;
+    font-size: 20px;
+}
+
+fieldset{
+    color: grey;
+    border:none;
+    margin-left: -10px;
+}
+
+input{
+    color: white;
+    background-color:grey;
+    border: none;
+}
+
+.formular{
+    color: white;
+    background-color: grey;
+    width: 30%;
+    height: 20px;
+    margin: 0px 0px 10px 0px;
+    padding: 5px;
+    }   
+
+#nachricht{
+    width: 50%;
+    height: 60px;
+}
+
+button{
+    color: white;
+    background-color: grey;
+    border: none;
+    width: 10%;
+    height: 20px;
+}
+ol{
+    margin-left: -15px;
+}
+
+h2 ~img{
+    width: 110px;
+    height: 50px;
+    position: relative;
+    right: 35px;
+    top: 15px;
+}
+
+#kontaktformular{
+    display: inline;
+}
+
+td > img{
+    width:100%;
+    height:60%;
+}
+
+#Rose{
+    height:52%
+}
+
+.Tabellendiv{
+    border: 7px solid darkred;
+    padding: 5px 5px 2px 5px;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+        font-weight: 200px;
+        font-size: 120px;
+        text-align: center;
+        letter-spacing: -5px;
+        margin-bottom: 15px;
+        padding-top: 10%;
+        padding-left: 5%;
+    }
+    
+    header{
+        margin-top: -8px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 100%;
+        height: 20%;
+        margin-left: -70px;
+        
+    }
+    
+    .wrapper{
+        width: 100%;
+        margin: 0px auto;
+    }
+
+    main{
+        padding-left: 5%;
+    }
+    h1 + p { 
+        font-size: 20px;
+        margin-top: -60px;
+        margin: 0px auto;
+        text-align: center;
+        margin-bottom: 15px;
+        padding-left: 5%;
+        
+    }
+
+    h2, h3{
+        font-size: 30px;
+    }
+    
+    .navigation {
+        width: 100%;
+        height: 30px;
+        left: 4%;
+        position: fixed;
+    }
+
+    video,audio {
+        width: 100%;
+        margin: 0px auto;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    nav img{
+        margin: 0px auto;
+        width: 40px;
+        height: 40px;
+        margin: 0px auto;
+    }
+    
+    .icon-Facebook, .icon-Instagram{
+        margin: 0px auto;
+        width: 40px;
+        height: 40px;
+        border-radius: 7px;
+    }
+    
+    .container{
+        display: flex;
+    }
+
+    audio[src$="wav"]{
+        width: 100%;
+        border: 1px solid grey;
+        margin: 0px auto;
+        margin-bottom: 20px;
+        border-radius: 2px;
+        box-shadow: 1px 1px 2px grey;
+        transition: all 0.5s ease-in-out 0s;
+    }
+    
+    audio:hover{
+        border: 2px solid maroon;
+        box-shadow: 2px 2px 3px maroon;
+    }
+    
+    img[src="Bildvonmir.jpeg"]{
+        width: 98%;
+        height: 20%;
+        margin: 0px auto;
+    }
+    
+    div>img{
+        width: 98%;
+        height: 40%;
+        border: 7px dotted maroon;
+        margin: 0px auto;
+        padding: 1px;
+    }
+    
+    .Bildvonmir {
+        border-radius: 2px;
+        width: 100%;
+        height: 5%;
+        margin-right: 5px;
+    }
+    
+    .ueber-mich{
+        font-size: 20px;
+    }
+    
+    div ~ table {
+        font-size: 20px;
+    }
+    
+    fieldset{
+        margin-left: -10px;
+    }
+
+    
+    .formular{
+        width: 70%;
+        height: 30px;
+        margin: 0px 0px 2px 0px;
+        padding: 1px;
+    }
+    
+    #nachricht{
+        width: 100%;
+        height: 60px;
+    }
+    
+    button{
+        width: 15%;
+        height: 40%;
+    }
+    ol{
+        margin-left: -3px;
+    }
+    
+    h2 ~img{
+        width: 20%;
+        height: 60px;
+        position: relative;
+        right: 35px;
+        top: 15px;
+    }
+    
+    #kontaktformular{
+        display: inline;
+    }
+    
+    td > img{
+        width:100%;
+        height:55%;
+    }
+    
+    #Rose{
+        height:47%
+    }
+    
+    .Tabellendiv{
+        border: 7px solid darkred;
+        padding: 5px 5px 2px 5px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px){
+    h1 {
+        font-weight: 700px;
+        font-size: 150px;
+        text-align: center;
+        letter-spacing: -17px;
+        transition: color 4s ease-in-out;
+        padding-top: 30px;
+    }
+     
+
+    header{
+        width: 90%;
+        margin-top: -8px;
+        border-bottom-left-radius: 500px;
+        border-bottom-right-radius: 500px;
+        height: 400px;
+       padding: 0px 55px 0px 20px;
+       
+    }
+    
+    .wrapper{
+        width: 90%;
+        margin: 0px auto;
+    }
+    
+    
+    body {
+        background-image: url(bg.png);
+        font-family: sans-serif; 
+    }
+    
+    h1 + p { 
+        font-size: 23px;
+        letter-spacing: -1px;
+        word-spacing: -2px;
+        margin-left: 50%;
+        margin-top: -120px;
+        
+    }
+    
+    h2, h3{
+        font-size: 30px;
+    }
+
+    .navigation {
+        width: 80%;
+        height: 18px;
+        text-align: center;
+        position: fixed;
+        
+    }
+    
+    nav td{
+        border-right: 1px solid white;
+        padding-right: 2px;
+    }
+    
+    #schwarze-Linie{
+        border-right: 1px solid black;
+    }
+
+    
+    video,audio {
+        width: 100%;
+        margin: 0px auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    main {
+        margin-top: 60px;
+    }
+    
+    nav img{
+        margin: 0px auto;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .icon-Facebook, .icon-Instagram{
+        margin-left: 50%;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        transition: background-color 1s ease-in-out;
+    }
+
+    .icon-Facebook {
+        margin-top:-20px;
+    }
+    
+    audio[src$="wav"]{
+        width: 100%;
+        border: 2px solid grey;
+        margin: 0px auto;
+        margin-bottom: 80px;
+        border-radius: 20px;
+        box-shadow: 7px 7px 10px grey;
+        transition: all 0.5s ease-in-out 0s;
+    }
+    
+    audio:hover{
+        border: 2px solid maroon;
+        box-shadow: 7px 7px 10px maroon;
+    }
+    
+    img[src="BildMädchen.jpg"]{
+        width: 100%;
+        height: 500px;
+        margin: 0px auto;
+    }
+    
+    div>img{
+        width: 100%;
+        height: 800px;
+        border: 7px dotted maroon;
+        margin: 0px auto;
+        padding: 4px;
+    }
+    
+    .Bildvonmir {
+        border-radius: 30px;
+        width: 30%;
+        height: 30%;
+        float: right;
+        margin-right: 30px;
+    }
+    
+    .ueber-mich{
+        font-size: 20px;
+    }
+    
+    div ~ table {
+        font-size: 20px;
+    }
+    
+    fieldset{
+        margin-left: -10px;
+    }
+    
+    .formular{
+        width: 50%;
+        height: 20px;
+        margin: 0px 0px 10px 0px;
+        padding: 5px;
+        }   
+    
+    #nachricht{
+        width: 70%;
+        height: 60px;
+    }
+    
+    button{
+        width: 20%;
+        height: 20px;
+    }
+    ol{
+        margin-left: -15px;
+    }
+    
+    h2 ~img{
+        width: 110px;
+        height: 50px;
+        position: relative;
+        right: 35px;
+        top: 15px;
+    }
+    
+    #kontaktformular{
+        display: inline;
+    }
+    
+    td > img{
+        width:100%;
+        height:60%;
+    }
+    
+    #Rose{
+        height:52%
+    }
+    
+    .Tabellendiv{
+        border: 7px solid darkred;
+        padding: 5px 5px 2px 5px;
+    }
+}
+
+.felx-box{
+    display: flex;
+}
