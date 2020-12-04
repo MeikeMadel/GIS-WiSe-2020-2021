@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
+    <script src="script.js" defer></script>
+    <script src="data.json"></script>
     <meta charset="UTF-8">
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokument</title>
     <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body id="kopfseite">
         <header>
-            <nav> 
-                <a href="index.html">Zurück zur Startseite</a>
-            </nav>
-            <h1>Kopf</h1>
+        
+            <h1>1. Wähle einen Kopf aus!</h1>
         </header>
-            <div id="kopfDiv"></div>
+       <main>
+        <div class="container">
+        <div id="buttonWeiter"></div>
+        <div id="kopfDiv0"></div>
+        <div id="kopfDiv1"></div>
+        <div id="kopfDiv2"></div>
+        <div id="kopfDiv3"></div>
+        </div>
+        <div id="flex-box">
+        <div id="auswahlaktuell"></div>
+        </div>
+       </main>
     </body>
-    <script src="script.js"></script>
-    <script src="data.js"></script>
+  
 </html>

@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
+    <script src="script.js" defer></script>
+    <script src="data.json"></script>
     <meta charset="UTF-8">
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokument</title>
     <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body id="koerperseite">
         <header>
-            <nav> 
-                <a href="index.html">Zurück zur Startseite</a>
-            </nav>
-            <h1>Körper</h1>
+            <h1>2. Wähle einen Körper aus!</h1>
         </header>
-            <div id="koerperDiv"></div>
+       <main>
+        <div id="buttonWeiter"></div>
+        <div id="buttonZurück"></div>
+        <div class="container">
+        <div id="koerperDiv0"></div>
+        <div id="koerperDiv1"></div>
+        <div id="koerperDiv2"></div>
+        <div id="koerperDiv3"></div>
+        
+        <div id="flex-box">
+        <div id="auswahlaktuell"></div>
+        <div id="auswahlaktuell2"></div>
+    </div>
+        </div>
+
+       </main>
+
     </body>
-    <script src="script.js"></script>
-    <script src="data.js"></script>
 </html>

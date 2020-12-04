@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
+    <script src="script.js" defer></script>
+    <script src="data.json"></script>
     <meta charset="UTF-8">
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokument</title>
     <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body id="beineseite">
         <header>
-            <nav> 
-                <a href="index.html">Zurück zur Startseite</a> 
-            </nav>
-            <h1>Beine</h1>
+            <h1>3. Wähle die Beine aus!</h1>
         </header>
         <main>
-            <div id="beineDiv"></div>
+            <div id="buttonWeiter"></div>
+            <div id="buttonZurück"></div>
+            <div class="container">
+            <div id="beineDiv0"></div>
+            <div id="beineDiv1"></div>
+            <div id="beineDiv2"></div>
+            <div id="beineDiv3"></div>
+            </div>
+            <div id="flex-box">
+            <div id="auswahlaktuell"></div>
+            <div id="auswahlaktuell2"></div>
+            <div id="auswahlaktuell3"></div>
+            </div>
         </main>
     </body>
-    <script src="script.js"></script>
-    <script src="data.js"></script>
+   
 </html>
