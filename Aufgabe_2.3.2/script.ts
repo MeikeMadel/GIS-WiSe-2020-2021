@@ -87,7 +87,7 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
     }
 }
 
-jsonLaden("http://127.0.0.1:5500/data.json");
+jsonLaden("https://127.0.0.1:5500/data.json");
 
 async function jsonLaden (_url: RequestInfo): Promise<void> {
     let response: Response = await fetch(_url);

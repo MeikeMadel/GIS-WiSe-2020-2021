@@ -56,7 +56,7 @@ var Aufgabe2_3_2;
             }
         }
     }
-    jsonLaden("http://127.0.0.1:5500/data.json");
+    jsonLaden("https://127.0.0.1:5500/data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();
