@@ -20,21 +20,6 @@ export interface Bein {
 }
 
 
-jsonLaden("http://127.0.0.1:5500/data.json");
-async function jsonLaden (_url: RequestInfo): Promise<void> {
-    let response: Response = await fetch(_url);
-    let data = await response.json();
-    localStorage.setItem("dataKopf", JSON.stringify(data.koepfeJSON));
-    localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
-    localStorage.setItem("dataBein", JSON.stringify(data.beineJSON));
-    
-}
-let kopf: Array<Kopf> = JSON.parse(localStorage.getItem("dataKopf"));
-let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
-let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
-
-
-
 function weiterButton ( _nextPage: string, _testStorage: string): void {
     let divButton: HTMLElement =  document.getElementById("buttonWeiter");
     let weiterButton: HTMLButtonElement = document.createElement("button");
@@ -102,7 +87,18 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
     }
 }
 
-
+jsonLaden("http://127.0.0.1:5500/data.json");
+async function jsonLaden (_url: RequestInfo): Promise<void> {
+    let response: Response = await fetch(_url);
+    let data = await response.json();
+    localStorage.setItem("dataKopf", JSON.stringify(data.kopfJSON));
+    localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
+    localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
+    
+}
+let kopf: Array<Kopf> = JSON.parse(localStorage.getItem("dataKopf"));
+let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
+let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
     
 
 let page: string = document.body.id;
@@ -147,7 +143,7 @@ case "beineseite":
     createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
 
 
-    addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeineStorage", "nameBeineStorage", "styleBeine", "ende.html");
+    addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
     
      
     break;
@@ -176,12 +172,18 @@ case "beineseite":
         linkStartseite.addEventListener("click", link);
         
         function link(): void {
-            localStorage.clear();
+            //nicht clear Storage, um die Daten aus der JSON Datei nicht zu löschen
+            localStorage.removeItem("quelleKopfStorage");
+            localStorage.removeItem("quelleKoerperStorage");
+            localStorage.removeItem("quelleBeinStorage");
+            localStorage.removeItem("nameKopfStorage");
+            localStorage.removeItem("nameKoerperStorage");
+            localStorage.removeItem("nameBeinStorage");
             document.location.href = "kopf.html";
         }
     
         createBildFinal("ergebnisKoerper", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-        createBildFinal("ergebnisBein", "quelleBeineStorage", "Beine", "nameBeineStorage");
+        createBildFinal("ergebnisBein", "quelleBeinStorage", "Beine", "nameBeinStorage");
         createBildFinal("ergebnisKopf", "quelleKopfStorage", "Kopf", "nameKopfStorage");
         
         datenSenden("https://gis-communication.herokuapp.com");

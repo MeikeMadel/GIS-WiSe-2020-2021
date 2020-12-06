@@ -1,17 +1,6 @@
 "use strict";
 var Aufgabe2_3_2;
 (function (Aufgabe2_3_2) {
-    jsonLaden("http://127.0.0.1:5500/data.json");
-    async function jsonLaden(_url) {
-        let response = await fetch(_url);
-        let data = await response.json();
-        localStorage.setItem("dataKopf", JSON.stringify(data.koepfeJSON));
-        localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
-        localStorage.setItem("dataBein", JSON.stringify(data.beineJSON));
-    }
-    let kopf = JSON.parse(localStorage.getItem("dataKopf"));
-    let koerper = JSON.parse(localStorage.getItem("dataKoerper"));
-    let bein = JSON.parse(localStorage.getItem("dataBein"));
     function weiterButton(_nextPage, _testStorage) {
         let divButton = document.getElementById("buttonWeiter");
         let weiterButton = document.createElement("button");
@@ -67,6 +56,17 @@ var Aufgabe2_3_2;
             }
         }
     }
+    jsonLaden("http://127.0.0.1:5500/data.json");
+    async function jsonLaden(_url) {
+        let response = await fetch(_url);
+        let data = await response.json();
+        localStorage.setItem("dataKopf", JSON.stringify(data.kopfJSON));
+        localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
+        localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
+    }
+    let kopf = JSON.parse(localStorage.getItem("dataKopf"));
+    let koerper = JSON.parse(localStorage.getItem("dataKoerper"));
+    let bein = JSON.parse(localStorage.getItem("dataBein"));
     let page = document.body.id;
     switch (page) {
         case "kopfseite":
@@ -86,7 +86,7 @@ var Aufgabe2_3_2;
             zurueckButton("koerper.html");
             createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
             createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-            addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeineStorage", "nameBeineStorage", "styleBeine", "ende.html");
+            addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
             break;
         case "ende":
             async function datenSenden(_url) {
@@ -109,11 +109,17 @@ var Aufgabe2_3_2;
             divButton.appendChild(linkStartseite);
             linkStartseite.addEventListener("click", link);
             function link() {
-                localStorage.clear();
+                //nicht clear Storage, um die Daten aus der JSON Datei nicht zu löschen
+                localStorage.removeItem("quelleKopfStorage");
+                localStorage.removeItem("quelleKoerperStorage");
+                localStorage.removeItem("quelleBeinStorage");
+                localStorage.removeItem("nameKopfStorage");
+                localStorage.removeItem("nameKoerperStorage");
+                localStorage.removeItem("nameBeinStorage");
                 document.location.href = "kopf.html";
             }
             createBildFinal("ergebnisKoerper", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-            createBildFinal("ergebnisBein", "quelleBeineStorage", "Beine", "nameBeineStorage");
+            createBildFinal("ergebnisBein", "quelleBeinStorage", "Beine", "nameBeinStorage");
             createBildFinal("ergebnisKopf", "quelleKopfStorage", "Kopf", "nameKopfStorage");
             datenSenden("https://gis-communication.herokuapp.com");
             break;
