@@ -166,10 +166,10 @@ case "beineseite":
             let jsonResponse = await response.json();
             let paragraph: HTMLElement = document.getElementById("ausgabeNachricht");
             if (jsonResponse.message != undefined) {
-                paragraph.appendChild(document.createTextNode(jsonResponse.message));
+                paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.message));
             } else if (jsonResponse.error != undefined) {
                 paragraph.setAttribute("id", "Fehler");
-                paragraph.appendChild(document.createTextNode(jsonResponse.error));
+                paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.error));
             }
         }
         
