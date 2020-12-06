@@ -71,8 +71,11 @@ var Aufgabe2_3_2;
     switch (page) {
         case "kopfseite":
             weiterButton("koerper.html", "quelleKopfStorage");
-            //Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
-            addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+            //erst laden, wenn fetch ferig geladen ist
+            if (localStorage.getItem("dataKopf") && localStorage.getItem("dataKoerper") && localStorage.getItem("dataBein") != null) {
+                //Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
+                addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+            }
             break;
         case "koerperseite":
             weiterButton("beine.html", "quelleKoerperStorage");

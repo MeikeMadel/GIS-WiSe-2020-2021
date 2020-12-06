@@ -88,6 +88,7 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
 }
 
 jsonLaden("http://127.0.0.1:5500/data.json");
+
 async function jsonLaden (_url: RequestInfo): Promise<void> {
     let response: Response = await fetch(_url);
     let data = await response.json();
@@ -99,6 +100,7 @@ async function jsonLaden (_url: RequestInfo): Promise<void> {
 let kopf: Array<Kopf> = JSON.parse(localStorage.getItem("dataKopf"));
 let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
 let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
+
     
 
 let page: string = document.body.id;
@@ -110,8 +112,15 @@ case "kopfseite":
 
 weiterButton("koerper.html", "quelleKopfStorage");
 
-//Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
-addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+//erst laden, wenn fetch ferig geladen ist
+if (localStorage.getItem("dataKopf") && localStorage.getItem("dataKoerper") && localStorage.getItem("dataBein") != null) {
+    //Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
+    addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+}
+
+
+
+
 
 break;
 

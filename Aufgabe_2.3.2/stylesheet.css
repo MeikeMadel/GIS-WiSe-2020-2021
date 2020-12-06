@@ -21,16 +21,16 @@
 }
 
 #styleKoerperRehkoerper {
-    width: 310px;
+    width: 305px;
     height: 110px;
     margin-left: 20px;
     margin-top: -10px;
 }
 
 #styleBeineRehbeine {
-    width: 355px;
-    margin-top: -16px;
-    margin-left: 10px;
+    width: 345px;
+    margin-top: -14px;
+    margin-left: 6px;
 }
 
 
@@ -88,9 +88,9 @@
 }
 
 #styleBeinePferdebeine {
-    width: 325px;
-    margin-top: -10px;
-    margin-left: 17px;
+    width: 315px;
+    margin-top: -12px;
+    margin-left: 20px;
 }
 
 
