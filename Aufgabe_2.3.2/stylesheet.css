@@ -3,35 +3,34 @@
     border: 7px solid black;
     box-shadow: 5px 5px 5px 5px grey;
     background-color: white;
-    margin: 20px;
+    margin: 10px;
     display: inline;
-    margin-right: 0px;
 
 }
 
 
 .Bilder:hover {
-    border: 4px solid maroon;
-    box-shadow: 7px 7px 7px 7px darkred;
+    border: 4px solid salmon;
+    box-shadow: 7px 7px 7px 7px salmon;
 }
-
 #styleKopfRehkopf {
-    width: 210px;
+    width: 160px;
     margin-left: 230px;
-    margin-bottom: -30px;
+    margin-bottom: -50px;
 
 }
 
 #styleKoerperRehkoerper {
-    width: 285px;
+    width: 310px;
+    height: 110px;
     margin-left: 20px;
-    margin-top: -15px;
+    margin-top: -10px;
 }
 
 #styleBeineRehbeine {
-    width: 310px;
-    margin-top: -4px;
-    margin-left: 20px;
+    width: 355px;
+    margin-top: -16px;
+    margin-left: 10px;
 }
 
 
@@ -43,59 +42,56 @@
 }
 
 #styleKoerperZebrakoerper {
-    width: 270px;
-    margin-left: 25px;
-    margin-top: -8px;
+    width: 310px;
+    margin-left: 17px;
+    margin-top: -15px;
 }
 
 #styleBeineZebrabeine {
-    width: 280px;
-    margin-top: -4px;
-    margin-left: 20px;
+    width: 320px;
+    margin-top: -8px;
+    margin-left: 10px;
 }
 
 
 #styleKopfHundekopf {
-    width: 170px;
-    height: 200px;
-    margin-left: 250px;
-    margin-bottom: -45px;
+    width: 160px;
+    margin-left: 265px;
+    margin-bottom: -30px;
 
 }
 
 #styleKoerperHundekoerper {
-    width: 240px;
-    height: 250px;
-    margin-left: 70px;
-    margin-top: -90px;
+    width: 300px;
+    height: 240px;
+    margin-left: 30px;
+    margin-top: -80px;
 }
 
 #styleBeineHundebeine {
-    width: 260px;
-    height: 100px;
+   width: 360px;
     margin-top: -12px;
-    margin-left: 70px;
+    margin-left: 20px;
 }
 
 #styleKopfPferdekopf {
-    width: 220px;
-    margin-left: 250px;
+    width: 210px;
+    margin-left: 230px;
     margin-bottom: -45px;
 
 }
 
 #styleKoerperPferdekoerper {
-    width: 240px;
-    margin-left: 70px;
-    margin-top: -90px;
+    width: 310px;
+    margin-left: 20px;
+    margin-top: -15px;
 }
 
-#styleBeinePferdeebeine {
-    width: 260px;
-    margin-top: -12px;
-    margin-left: 70px;
+#styleBeinePferdebeine {
+    width: 325px;
+    margin-top: -10px;
+    margin-left: 17px;
 }
-
 
 
 h1 {
@@ -104,7 +100,7 @@ h1 {
     font-size: 100px;
     text-align: center;
     letter-spacing: -10px;
-    margin-top: 0px;
+    margin: 10px;
     transition: color 4s ease-in-out;
 }
 
@@ -114,7 +110,7 @@ body {
     background-color: white;
 }
 
-.container{
+.container1{
     margin: 0px auto;
 
 
@@ -126,35 +122,49 @@ button {
     color: white;
     background-color: rgb(66, 65, 65);
     margin-bottom: 30px;
-    margin-left: 325px;
-    margin-right: 325px;
+    margin-left: 375px;
+    margin-right: 375px;
 }
 
 button:hover {
-    background-color: maroon;
+    background-color: salmon;
 }
 
-#flex-box{
+
+#flex-box1{
     float: right;
-    margin-top: -700px;
-    margin-right: 250px;
+    margin-top: -1300px;
+    margin-left: 600px;
     
 }
 
+#flex-box2{
+    float: right;
+    margin-top: -700px;
+    margin-left: 700px;
+    
+}
+
+#flex-box3{
+    float: right;
+    margin-top: -500px;
+    margin-left: 700px;
+    
+}
 
 #ende {
-    width: 800px;
+    width: 900px;
     margin: 0px auto;
     
 }
 
 #kopfseite{
-    width: 800px;
+    width: 900px;
     margin: 0px auto;
 }
 
 #koerperseite{
-    width: 800px;
+    width: 900px;
     margin: 0px auto;
 }
 
@@ -168,5 +178,25 @@ h2{
     font-weight: 200px;
     font-size: 50px;
     text-align: center;
-    letter-spacing: -5px;
+    letter-spacing: -4px;
+}
+
+#Ergebnis {
+    margin-left: 230px;
+}
+
+header {
+    background-color: salmon;
+    padding: 10px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+#ausgabeNachricht {
+    font-weight: 30px;
+    text-align: center;
+}
+
+#Fehler {
+    color: red;
 }

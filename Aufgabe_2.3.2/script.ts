@@ -19,26 +19,9 @@ export interface Beine {
     ebene: number;
 }
 
-auswahlJSONkonvertieren();
-
-function auswahlJSONkonvertieren(): void {
-    let koepfe: Koepfe [] = JSON.parse(koepfeAuswahlJSON);
-    console.log(koepfe[0].name);
-    let koerper: Koerper [] = JSON.parse(koerperAuswahlJSON);
-    console.log(koerper[0].name);
-    let beine: Beine [] = JSON.parse(beineAuswahlJSON);
-    console.log(beine[0].name);
-}
 
 
-let koepfe: Koepfe [] = JSON.parse(koepfeAuswahlJSON);
-let koerper: Koerper [] = JSON.parse(koerperAuswahlJSON);
-let beine: Beine [] = JSON.parse(beineAuswahlJSON);
-
-
-
-
-function weiterButton ( _s: string, _testStorage: string): void {
+function weiterButton ( _nextPage: string, _testStorage: string): void {
     let divButton: HTMLElement =  document.getElementById("buttonWeiter");
     let weiterButton: HTMLButtonElement = document.createElement("button");
     weiterButton.appendChild(document.createTextNode("weiter"));
@@ -51,7 +34,7 @@ function weiterButton ( _s: string, _testStorage: string): void {
         alert("Bitte wählen Sie ein Bild aus");
     }
     else {
-        document.location.href = _s;
+        document.location.href = _nextPage;
     } 
 }  
 }
@@ -79,29 +62,44 @@ function createBildFinal (_id: string, _quelleStorage: string, _styleId: string,
     _div.appendChild(_img);
 }
 
-function addImages (_auswahlaktuell: string, _koerperteil: string, _div: string, _koerperteilQuelleStorage: string, _koerperteilNameStorage: string, _styleKoerperteil: string): void {
-    let divChoice: HTMLElement = document.getElementById(_auswahlaktuell);
+function addImages (_auswahlAktuell: string, _storedKoerperteil: Array<Koepfe> , _div: string, _koerperteilQuelleStorage: string, _koerperteilNameStorage: string, _styleKoerperteil: string, _linkNextPage: string): void {
+    let divChoice: HTMLElement = document.getElementById(_auswahlAktuell);
     let choice: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-    for (let i: number = 0; i < _koerperteil.length; i++) {
+    for (let i: number = 0; i < _storedKoerperteil.length; i++) {
         let divKoerperteil: HTMLElement = document.getElementById(_div + String(i));
         let bildKoerperteil: HTMLImageElement = document.createElement("img");
         bildKoerperteil.classList.add("Bilder");
-        bildKoerperteil.setAttribute("src", _koerperteil[i].quelle);
-        bildKoerperteil.dataset.value = _koerperteil[i].;
+        bildKoerperteil.setAttribute("src", _storedKoerperteil[i].quelle);
+        bildKoerperteil.dataset.value = _storedKoerperteil[i].name;
         divKoerperteil.appendChild(bildKoerperteil);
         bildKoerperteil.addEventListener("click", auswahlBild);
         function auswahlBild(): void {
-            let auswahlKoerperteil: string = _koerperteil[i].quelle;
-            let auswahlName: string = _koerperteil[i].name;
+            let auswahlKoerperteil: string = _storedKoerperteil[i].quelle;
+            let auswahlName: string = _storedKoerperteil[i].name;
             localStorage.setItem(_koerperteilNameStorage, auswahlName);
             localStorage.setItem(_koerperteilQuelleStorage, auswahlKoerperteil);
             choice.setAttribute("id", _styleKoerperteil + localStorage.getItem(_koerperteilNameStorage));
             choice.setAttribute("src", localStorage.getItem(_koerperteilQuelleStorage));
             divChoice.appendChild(choice);
+            location.href = _linkNextPage;
         }
     }
 }
 
+jsonLaden("http://127.0.0.1:5500/data.json");
+
+   
+async function jsonLaden (_url: RequestInfo): Promise<void> {
+    let response: Response = await fetch(_url);
+    let data = await response.json();
+    localStorage.setItem("dataKoepfe", JSON.stringify(data.koepfeJSON));
+    localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
+    localStorage.setItem("dataBeine", JSON.stringify(data.beineJSON));
+}
+
+let koepfe: Array<Koepfe> = JSON.parse(localStorage.getItem("dataKoepfe"));
+let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
+let beine: Array<Beine> = JSON.parse(localStorage.getItem("dataBeine"));
 let page: string = document.body.id;
 
 switch (page)  {
@@ -109,68 +107,23 @@ switch (page)  {
 
 case "kopfseite":
 
-    weiterButton("koerper.html", "quelleKopfStorage");
-    
-    let divChoice: HTMLElement = document.getElementById("auswahlaktuell");
-    let choice: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-    
-    for (let i: number = 0; i < koepfe.length; i++) {
+weiterButton("koerper.html", "quelleKopfStorage");
 
-        let divKopf: HTMLElement = document.getElementById("kopfDiv" + String(i));
-        let bildKopf: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-        bildKopf.classList.add("Bilder");
-        bildKopf.setAttribute("src", koepfe[i].quelle);
-        bildKopf.dataset.value = koepfe[i].name;
-        divKopf.appendChild(bildKopf);
-        bildKopf.addEventListener("click", auswahlBild);
-        function auswahlBild(): void {
-            let auswahlKopf: string = koepfe[i].quelle;
-            let auswahlName: string = koepfe[i].name;
-            localStorage.setItem("nameKopfStorage", auswahlName);
-            localStorage.setItem("quelleKopfStorage", auswahlKopf);
-            choice.setAttribute("id", "styleKopf" + localStorage.getItem("nameKopfStorage"));
-            choice.setAttribute("src", localStorage.getItem("quelleKopfStorage"));
-            divChoice.appendChild(choice);
-        }
+addImages("auswahlAktuell", koepfe, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
 
-        
-    }
-    
-    break;
+break;
 
 
 case "koerperseite":
+
 weiterButton("beine.html", "quelleKoerperStorage");
 zurueckButton("kopf.html");
 
+createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+
+addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
 
 
-createBildFinal("auswahlaktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-
-let divChoice2: HTMLElement = document.getElementById("auswahlaktuell2");
-let choice2: HTMLImageElement = document.createElement("img");
-
-
-for (let i: number = 0; i < koerper.length; i++) {
-    let b: number = i;
-    let divKoerper: HTMLElement = document.getElementById("koerperDiv" + String(b));
-    let bildKoerper: HTMLImageElement = document.createElement("img");
-    bildKoerper.classList.add("Bilder");
-    bildKoerper.setAttribute("src", koerper[i].quelle);
-    bildKoerper.dataset.value = koerper[i].name;
-    divKoerper.appendChild(bildKoerper);
-    bildKoerper.addEventListener("click", linkBeine);
-
-    function linkBeine(): void {
-        let auswahlKoerper: string = koerper[i].quelle;
-        let auswahlName: string = koerper[i].name;
-        localStorage.setItem("nameKoerperStorage", auswahlName);
-        localStorage.setItem("quelleKoerperStorage", auswahlKoerper);
-        choice2.setAttribute("id", "styleKoerper" + localStorage.getItem("nameKoerperStorage"));
-        choice2.setAttribute("src", localStorage.getItem("quelleKoerperStorage"));
-        divChoice2.appendChild(choice2);
-        }
-    }
 
     
 break;
@@ -178,63 +131,57 @@ break;
 
 
 case "beineseite":
+    
     weiterButton("ende.html", "quelleBeineStorage");
+    
     zurueckButton("koerper.html");
     
+    createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+    createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
+
+
+    addImages("auswahlAktuell3", beine, "beineDiv", "quelleBeineStorage", "nameBeineStorage", "styleBeine", "ende.html");
     
-    createBildFinal("auswahlaktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-    createBildFinal("auswahlaktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-
-    let divChoice3: HTMLElement = document.getElementById("auswahlaktuell3");
-    let choice3: HTMLImageElement = document.createElement("img");
-
-
-    for (let i: number = 0; i < beine.length; i++) {
-        let a: number = i;
-        let divBeine: HTMLElement = document.getElementById("beineDiv" + String(a));
-        let bildBeine: HTMLImageElement = document.createElement("img");
-        bildBeine.classList.add("Bilder");
-        bildBeine.setAttribute("src", beine[i].quelle);
-        bildBeine.dataset.value = beine[i].name;
-        divBeine.appendChild(bildBeine);
-        bildBeine.addEventListener("click", linkStartseite);
-        function linkStartseite(): void {
-            let auswahlBeine: string = beine[i].quelle;
-            let auswahlName: string = beine[i].name;
-            localStorage.setItem("nameBeineStorage", auswahlName);
-            localStorage.setItem("quelleBeineStorage", auswahlBeine);
-            choice3.setAttribute("src", localStorage.getItem("quelleBeineStorage"));
-            choice3.setAttribute("id", "styleBeine" + localStorage.getItem("nameBeineStorage"));
-            divChoice3.appendChild(choice3);
-            
-        }
-       
-    }
+     
     break;
 
     case "ende":
-    
-
+        async function datenSenden(_url: RequestInfo): Promise<void> {
+            let query: URLSearchParams = new URLSearchParams(localStorage);
+            _url = _url + "?" + query.toString();
+            let response: Response = await fetch(_url);
+            let jsonAntwort = await response.json();
+            let paragraph: HTMLElement = document.getElementById("ausgabeNachricht");
+            if (jsonAntwort.message != undefined) {
+                paragraph.appendChild(document.createTextNode(jsonAntwort.message));
+            } else if (jsonAntwort.error != undefined) {
+                paragraph.setAttribute("id", "Fehler");
+                paragraph.appendChild(document.createTextNode(jsonAntwort.error));
+            }
+        }
+        
         let kopfButtonLink: HTMLElement = document.getElementById("kopfButton");
         let linkKopfSeite: HTMLButtonElement = document.createElement("button");
         linkKopfSeite.appendChild(document.createTextNode("nochmal"));
         kopfButtonLink.appendChild(linkKopfSeite);
         
-        linkKopfSeite.addEventListener("click", linkKopf);
+        linkKopfSeite.addEventListener("click", link);
         
-        function linkKopf(): void {
+        function link(): void {
             localStorage.clear();
             document.location.href = "kopf.html";
         }
-        
-       
-        
+
+        datenSenden("https://gis-communication.herokuapp.com");
+
+    
         createBildFinal("ergebnisKoerper", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
         createBildFinal("ergebnisBein", "quelleBeineStorage", "Beine", "nameBeineStorage");
         createBildFinal("ergebnisKopf", "quelleKopfStorage", "Kopf", "nameKopfStorage");
         
         
         break;
-}
 
+    }
+  
 }
