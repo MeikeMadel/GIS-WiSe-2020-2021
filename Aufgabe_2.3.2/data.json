@@ -1,6 +1,6 @@
 
 {
-    "koepfeJSON":  [
+    "kopfJSON":  [
         {"name": "Zebrakopf", "quelle": "zebra-kopfFertig2.jpg", "ebene": 1},
         {"name": "Hundekopf", "quelle": "hund-kopfFertig2.jpg", "ebene": 1},
         {"name": "Rehkopf", "quelle": "reh-kopfFertig2.jpg", "ebene": 1},
@@ -15,7 +15,7 @@
         {"name": "Pferdekoerper", "quelle": "pferd-koerperFertig3.jpg", "ebene": 2}
     ],
 
-    "beineJSON": [
+    "beinJSON": [
         {"name": "Zebrabeine", "quelle": "zebra-beineFertig2.jpg", "ebene": 3},
         {"name": "Hundebeine", "quelle": "hund-beineFertig2.jpg", "ebene": 3},
         {"name": "Rehbeine", "quelle": "reh-beineFertig3.jpg", "ebene": 3},
