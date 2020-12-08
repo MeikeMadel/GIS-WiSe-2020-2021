@@ -87,7 +87,7 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
     }
 }
 
-jsonLaden("https://127.0.0.1:5500/data.json");
+jsonLaden("https://github.com/MeikeMadel/GIS-WiSe-2020-2021/blob/main/Aufgabe_2.3.2//data.json");
 
 async function jsonLaden (_url: RequestInfo): Promise<void> {
     let response: Response = await fetch(_url);
