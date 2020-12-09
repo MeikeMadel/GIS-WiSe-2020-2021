@@ -1,21 +1,6 @@
 "use strict";
 var Aufgabe2_3_2;
 (function (Aufgabe2_3_2) {
-    function weiterButton(_nextPage, _testStorage) {
-        let divButton = document.getElementById("buttonWeiter");
-        let weiterButton = document.createElement("button");
-        weiterButton.appendChild(document.createTextNode("weiter"));
-        divButton.appendChild(weiterButton);
-        weiterButton.addEventListener("click", link);
-        function link() {
-            if (localStorage.getItem(_testStorage) == null) {
-                alert("Bitte wählen Sie ein Bild aus");
-            }
-            else {
-                document.location.href = _nextPage;
-            }
-        }
-    }
     function zurueckButton(_pageBack) {
         let divButton = document.getElementById("buttonZurück");
         let buttonWeiter = document.createElement("button");
@@ -56,7 +41,7 @@ var Aufgabe2_3_2;
             }
         }
     }
-    jsonLaden("https://127.0.0.1:5500/data.json");
+    jsonLaden("https://raw.githubusercontent.com/MeikeMadel/GIS-WiSe-2020-2021/main/Aufgabe_2.3.2/data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();
@@ -70,7 +55,6 @@ var Aufgabe2_3_2;
     let page = document.body.id;
     switch (page) {
         case "kopfseite":
-            weiterButton("koerper.html", "quelleKopfStorage");
             //erst laden, wenn fetch ferig geladen ist
             if (localStorage.getItem("dataKopf") && localStorage.getItem("dataKoerper") && localStorage.getItem("dataBein") != null) {
                 //Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
@@ -78,14 +62,12 @@ var Aufgabe2_3_2;
             }
             break;
         case "koerperseite":
-            weiterButton("beine.html", "quelleKoerperStorage");
             zurueckButton("kopf.html");
             //Id des Divs, Quelle des vorher ausgewählten Bildes bekommen, "Kopf" und "nameKopfStorage" Id für stylesheet erstellen
             createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
             addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
             break;
         case "beineseite":
-            weiterButton("ende.html", "quelleBeineStorage");
             zurueckButton("koerper.html");
             createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
             createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
