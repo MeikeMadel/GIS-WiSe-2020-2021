@@ -41,7 +41,7 @@ var Aufgabe2_3_2;
             }
         }
     }
-    jsonLaden("https://raw.githubusercontent.com/MeikeMadel/GIS-WiSe-2020-2021/main/Aufgabe_2.3.2/data.json");
+    jsonLaden("/Aufgabe_2.3.2/data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();
