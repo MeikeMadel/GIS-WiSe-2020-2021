@@ -49,17 +49,13 @@ var Aufgabe2_3_2;
         localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
         localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
     }
-    let kopf = JSON.parse(localStorage.getItem("dataKopf"));
+    let kopf = JSON.parse(localStorage.getItem("dataKoerper"));
     let koerper = JSON.parse(localStorage.getItem("dataKoerper"));
     let bein = JSON.parse(localStorage.getItem("dataBein"));
     let page = document.body.id;
     switch (page) {
         case "kopfseite":
-            //erst laden, wenn fetch ferig geladen ist
-            if (localStorage.getItem("dataKopf") && localStorage.getItem("dataKoerper") && localStorage.getItem("dataBein") != null) {
-                //Id des Divs des ausgewählten Bildes, Array Kopf, Id bekommen des jeweiligen Divs, Quelle des Kopfes als Attribut "src", Name des Kopfs als data.value, Id für stylesheet erstellen, Link nächste Seite
-                addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
-            }
+            addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
             break;
         case "koerperseite":
             zurueckButton("kopf.html");
