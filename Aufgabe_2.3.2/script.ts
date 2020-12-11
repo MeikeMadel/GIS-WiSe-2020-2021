@@ -68,7 +68,7 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
     }
 }
 
-jsonLaden("/Aufgabe_2.3.2/data.json");
+jsonLaden("data.json");
 
 async function jsonLaden (_url: RequestInfo): Promise<void> {
     let response: Response = await fetch(_url);
@@ -78,7 +78,7 @@ async function jsonLaden (_url: RequestInfo): Promise<void> {
     localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
     
 }
-let kopf: Array<Kopf> = JSON.parse(localStorage.getItem("dataKopf"));
+let kopf: Array<Kopf> =  JSON.parse(localStorage.getItem("dataKopf"));
 let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
 let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
 
@@ -137,7 +137,7 @@ break;
 case "ende":
 
 async function datenSenden(_url: RequestInfo): Promise<void> {
-    let query: URLSearchParams = new URLSearchParams(localStorage);
+    let query: URLSearchParams = new URLSearchParams(<any>localStorage);
     _url = _url + "?" + query.toString();
     let response: Response = await fetch(_url);
     let jsonResponse = await response.json();
