@@ -115,6 +115,7 @@ switch (page)  {
     
         break;
 
+
     case "ende":
         async function datenSenden(_url: RequestInfo): Promise<void> {
             let query: URLSearchParams = new URLSearchParams(<any>localStorage);
