@@ -78,7 +78,7 @@ async function jsonLaden (_url: RequestInfo): Promise<void> {
     localStorage.setItem("dataBein", JSON.stringify(data.beinJSON)); 
 }
 
-let kopf: Array<Kopf> =  JSON.parse(localStorage.getItem("dataKoerper"));
+let kopf: Array<Kopf> =  JSON.parse(localStorage.getItem("dataKopf"));
 let koerper: Array<Koerper> = JSON.parse(localStorage.getItem("dataKoerper"));
 let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
 

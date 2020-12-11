@@ -49,7 +49,7 @@ var Aufgabe2_3_2;
         localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
         localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
     }
-    let kopf = JSON.parse(localStorage.getItem("dataKoerper"));
+    let kopf = JSON.parse(localStorage.getItem("dataKopf"));
     let koerper = JSON.parse(localStorage.getItem("dataKoerper"));
     let bein = JSON.parse(localStorage.getItem("dataBein"));
     let page = document.body.id;
