@@ -48,62 +48,65 @@ var Aufgabe2_3_2;
         localStorage.setItem("dataKopf", JSON.stringify(data.kopfJSON));
         localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
         localStorage.setItem("dataBein", JSON.stringify(data.beinJSON));
+        imagesAufrufen();
     }
     let kopf = JSON.parse(localStorage.getItem("dataKopf"));
     let koerper = JSON.parse(localStorage.getItem("dataKoerper"));
     let bein = JSON.parse(localStorage.getItem("dataBein"));
     let page = document.body.id;
-    switch (page) {
-        case "kopfseite":
-            addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
-            break;
-        case "koerperseite":
-            zurueckButton("kopf.html");
-            //Id des Divs, Quelle des vorher ausgewählten Bildes bekommen, "Kopf" und "nameKopfStorage" Id für stylesheet erstellen
-            createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-            addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
-            break;
-        case "beineseite":
-            zurueckButton("koerper.html");
-            createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-            createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-            addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
-            break;
-        case "ende":
-            async function datenSenden(_url) {
-                let query = new URLSearchParams(localStorage);
-                _url = _url + "?" + query.toString();
-                let response = await fetch(_url);
-                let jsonResponse = await response.json();
-                let paragraph = document.getElementById("ausgabeNachricht");
-                if (jsonResponse.message != undefined) {
-                    paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.message));
+    function imagesAufrufen() {
+        switch (page) {
+            case "kopfseite":
+                addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+                break;
+            case "koerperseite":
+                zurueckButton("kopf.html");
+                //Id des Divs, Quelle des vorher ausgewählten Bildes bekommen, "Kopf" und "nameKopfStorage" Id für stylesheet erstellen
+                createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+                addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
+                break;
+            case "beineseite":
+                zurueckButton("koerper.html");
+                createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+                createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
+                addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
+                break;
+            case "ende":
+                async function datenSenden(_url) {
+                    let query = new URLSearchParams(localStorage);
+                    _url = _url + "?" + query.toString();
+                    let response = await fetch(_url);
+                    let jsonResponse = await response.json();
+                    let paragraph = document.getElementById("ausgabeNachricht");
+                    if (jsonResponse.message != undefined) {
+                        paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.message));
+                    }
+                    else if (jsonResponse.error != undefined) {
+                        paragraph.setAttribute("id", "Fehler");
+                        paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.error));
+                    }
                 }
-                else if (jsonResponse.error != undefined) {
-                    paragraph.setAttribute("id", "Fehler");
-                    paragraph.appendChild(document.createTextNode("Antwort des Servers: " + jsonResponse.error));
+                let divButton = document.getElementById("wiederholen");
+                let linkStartseite = document.createElement("button");
+                linkStartseite.appendChild(document.createTextNode("nochmal"));
+                divButton.appendChild(linkStartseite);
+                linkStartseite.addEventListener("click", link);
+                function link() {
+                    //nicht clear Storage, um die Daten aus der JSON Datei nicht zu löschen
+                    localStorage.removeItem("quelleKopfStorage");
+                    localStorage.removeItem("quelleKoerperStorage");
+                    localStorage.removeItem("quelleBeinStorage");
+                    localStorage.removeItem("nameKopfStorage");
+                    localStorage.removeItem("nameKoerperStorage");
+                    localStorage.removeItem("nameBeinStorage");
+                    document.location.href = "kopf.html";
                 }
-            }
-            let divButton = document.getElementById("wiederholen");
-            let linkStartseite = document.createElement("button");
-            linkStartseite.appendChild(document.createTextNode("nochmal"));
-            divButton.appendChild(linkStartseite);
-            linkStartseite.addEventListener("click", link);
-            function link() {
-                //nicht clear Storage, um die Daten aus der JSON Datei nicht zu löschen
-                localStorage.removeItem("quelleKopfStorage");
-                localStorage.removeItem("quelleKoerperStorage");
-                localStorage.removeItem("quelleBeinStorage");
-                localStorage.removeItem("nameKopfStorage");
-                localStorage.removeItem("nameKoerperStorage");
-                localStorage.removeItem("nameBeinStorage");
-                document.location.href = "kopf.html";
-            }
-            createBildFinal("ergebnisKoerper", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-            createBildFinal("ergebnisBein", "quelleBeinStorage", "Beine", "nameBeinStorage");
-            createBildFinal("ergebnisKopf", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-            datenSenden("https://gis-communication.herokuapp.com");
-            break;
+                createBildFinal("ergebnisKoerper", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
+                createBildFinal("ergebnisBein", "quelleBeinStorage", "Beine", "nameBeinStorage");
+                createBildFinal("ergebnisKopf", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+                datenSenden("https://gis-communication.herokuapp.com");
+                break;
+        }
     }
 })(Aufgabe2_3_2 || (Aufgabe2_3_2 = {}));
 //# sourceMappingURL=script.js.map

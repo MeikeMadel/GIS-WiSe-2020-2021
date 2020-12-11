@@ -68,6 +68,7 @@ function addImages (_auswahlAktuellDiv: string, _koerperteilStorage: Array<Kopf>
     }
 }
 
+
 jsonLaden("data.json");
 
 async function jsonLaden (_url: RequestInfo): Promise<void> {
@@ -76,6 +77,7 @@ async function jsonLaden (_url: RequestInfo): Promise<void> {
     localStorage.setItem("dataKopf", JSON.stringify(data.kopfJSON));
     localStorage.setItem("dataKoerper", JSON.stringify(data.koerperJSON));
     localStorage.setItem("dataBein", JSON.stringify(data.beinJSON)); 
+    imagesAufrufen();
 }
 
 let kopf: Array<Kopf> =  JSON.parse(localStorage.getItem("dataKopf"));
@@ -86,9 +88,12 @@ let bein: Array<Bein> = JSON.parse(localStorage.getItem("dataBein"));
 
 let page: string = document.body.id;
 
+function imagesAufrufen(): void {
 switch (page)  {
+
+
+    case "kopfseite": 
     
-    case "kopfseite":   
     addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
     
     break;
@@ -156,5 +161,5 @@ switch (page)  {
         
         break;
     }
-  
+}
 }
