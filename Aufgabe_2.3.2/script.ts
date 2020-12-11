@@ -93,29 +93,27 @@ switch (page)  {
 
 
     case "kopfseite": 
-    
-    addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
-    
-    break;
+        addImages("auswahlAktuell", kopf, "kopfDiv", "quelleKopfStorage", "nameKopfStorage", "styleKopf", "koerper.html");
+        break;
 
     case "koerperseite":
-    zurueckButton("kopf.html");
-    //Id des Divs, Quelle des vorher ausgewählten Bildes bekommen, "Kopf" und "nameKopfStorage" Id für stylesheet erstellen
-    createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+        zurueckButton("kopf.html");
+        //Id des Divs, Quelle des vorher ausgewählten Bildes bekommen, "Kopf" und "nameKopfStorage" Id für stylesheet erstellen
+        createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
     
-    addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
+        addImages("auswahlAktuell2", koerper, "koerperDiv", "quelleKoerperStorage", "nameKoerperStorage", "styleKoerper", "beine.html");
     
-    break;
+        break;
 
 
 
     case "beineseite":
-    zurueckButton("koerper.html");
-    createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
-    createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
-    addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
+        zurueckButton("koerper.html");
+        createBildFinal("auswahlAktuell", "quelleKopfStorage", "Kopf", "nameKopfStorage");
+        createBildFinal("auswahlAktuell2", "quelleKoerperStorage", "Koerper", "nameKoerperStorage");
+        addImages("auswahlAktuell3", bein, "beineDiv", "quelleBeinStorage", "nameBeinStorage", "styleBeine", "ende.html");
     
-    break;
+        break;
 
     case "ende":
         async function datenSenden(_url: RequestInfo): Promise<void> {
