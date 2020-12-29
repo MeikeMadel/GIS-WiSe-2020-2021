@@ -1,1 +1,1 @@
-web: node Aufgabe_3.1/script.js
+web: node Aufgabe_3.1/server.js
