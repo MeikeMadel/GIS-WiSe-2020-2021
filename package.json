@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "gis-wise-2020-2021",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@types/mongodb": "^3.6.3",
+    "mongodb": "^3.6.3"
+  },
   "scripts": {
-    "start": "node Aufgabe_3.1/server.js"
+    "start": "node Aufgabe_3.1/server.js remote"
   },
   "repository": {
     "type": "git",
