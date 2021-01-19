@@ -4,11 +4,22 @@
     <script type="text/javascript" src="data.js" defer></script>
     <meta charset="UTF-8">
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
-    <title>Übung</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Anmeldeformular</title>
     </head>
-    <body>
+    <body id="anmeldungPage">
         <header>
+          <nav>
+            <table>
+              <tr>
+                <td><a  href="userDatenbank.html">User der Datenbank</a></li>
+                <td><a  href="logIn.html">LogIn</a></li>
+              </tr>
+            <table>   
+          <nav>
+
           <h1>Anmeldeformular</h1>
+
         </header>
         
         <main>
@@ -26,14 +37,12 @@
             <input type="text" name="adresse" value=""><br>
 
             <label for="passwort">Passwort:</label>
-            <input type="password" id="pass" name="passwort" required><br>
+            <input type="password" id="passwort" name="passwort" required><br>
 
-            <button type="submit" name="button" id="sendData" value="send">Versand Daten in remote Datenbank</button>
-            <button type="submit" name="button" id="storeData" value="store">gespeicherte Daten in der Datenbank anzeigen</button>
-            
+            <button type="submit" name="button" id="sendData" value="send">Registrieren</button>
           </form>
 
-          <div id="serverAntwort">
+          <div id="emailVorhanden">
 
           </div>
         </main>

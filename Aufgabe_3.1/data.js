@@ -2,7 +2,7 @@
 var P_3_1Data;
 (function (P_3_1Data) {
     window.addEventListener("load", handleLoad);
-    let url = "https://giswise20202021.herokuapp.com";
+    let url = "http://localhost:8100";
     let form;
     function handleLoad() {
         console.log("Seite geladen");
@@ -33,8 +33,9 @@ var P_3_1Data;
             url = url + "/store" + "?" + query.toString();
             let response = await fetch(url);
             let responseText = await response.text();
-            let jsObject = JSON.stringify(responseText);
-            serverAntwort.appendChild(document.createTextNode(jsObject));
+            console.log(responseText);
+            //let jsObject: string = JSON.stringify(responseText);
+            serverAntwort.appendChild(document.createTextNode(responseText));
             divAusgabe.appendChild(serverAntwort);
         }
     }

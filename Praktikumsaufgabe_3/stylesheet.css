@@ -1,0 +1,36 @@
+button{
+    background-color: lightgrey;
+    border: 2px dotted gray;
+    font-size: 18px;
+    margin: 10px;
+  
+}
+
+body {
+    background-color: lightsteelblue;
+    margin-left: 50px;
+    font-family: sans-serif; 
+}
+
+
+input {
+    margin-top: 2px;
+}
+
+
+table {
+    background-color: rgb(240, 240, 236);
+    text-align: center;
+}
+
+td {
+    border-right: 3px solid rgba(255, 255, 255, 0);
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+}
+h1{
+    font-size: 30px;
+}

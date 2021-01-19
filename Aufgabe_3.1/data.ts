@@ -1,7 +1,7 @@
 
 namespace P_3_1Data { 
     window.addEventListener("load", handleLoad);
-    let url: string = "https://giswise20202021.herokuapp.com";
+    let url: string = "http://localhost:8100";
     let form: HTMLFormElement;
 
 
@@ -44,8 +44,9 @@ namespace P_3_1Data {
             url = url + "/store" + "?" + query.toString();
             let response: Response = await fetch(url);
             let responseText: string = await response.text();
-            let jsObject: string = JSON.stringify(responseText);
-            serverAntwort.appendChild(document.createTextNode(jsObject));
+            console.log(responseText);
+            //let jsObject: string = JSON.stringify(responseText);
+            serverAntwort.appendChild(document.createTextNode(responseText));
             divAusgabe.appendChild(serverAntwort);
         }
     }
