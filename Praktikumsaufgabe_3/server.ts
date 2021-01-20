@@ -123,6 +123,7 @@ export namespace P_3Server {
                         _response.end();
                     }
                 });   
+                _response.end();
             }
             else if (parsedUrlPathname == "/show") {
                 retriveData().then((response) => {
