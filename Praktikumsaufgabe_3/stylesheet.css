@@ -10,6 +10,7 @@ body {
     background-color: lightsteelblue;
     margin-left: 50px;
     font-family: sans-serif; 
+    font-size: 18px;
 }
 
 
@@ -19,18 +20,22 @@ input {
 
 
 table {
-    background-color: rgb(240, 240, 236);
+    background-color: gray;
     text-align: center;
+    color: white;
+   
 }
 
 td {
-    border-right: 3px solid rgba(255, 255, 255, 0);
+    color: white;
+    border-right: 2px solid black;
     padding: 5px;
+    
 }
 
 a{
     text-decoration: none;
 }
 h1{
-    font-size: 30px;
+    font-size: 40px;
 }

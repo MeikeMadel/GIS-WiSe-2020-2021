@@ -1,1 +1,1 @@
-web:node Aufgabe_3.1/server.js
+web:node Praktikumsaufgabe_3/server.js
