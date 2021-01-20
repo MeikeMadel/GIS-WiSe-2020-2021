@@ -148,7 +148,6 @@ export namespace P_3Server {
                 });
             }
         }
-        _response.end();
     }
 
 }
