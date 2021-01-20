@@ -78,9 +78,9 @@ var P_3Server;
     }
     function handleRequest(_request, _response) {
         console.log("I hear voices!");
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request) {
+            _response.setHeader("content-type", "text/html; charset=utf-8");
+            _response.setHeader("Access-Control-Allow-Origin", "*");
             let parsedUrl = Url.parse(_request.url, true);
             let parsedUrlPathname = parsedUrl.pathname;
             let queryData = parsedUrl.query;
@@ -125,8 +125,8 @@ var P_3Server;
                     }
                 });
             }
+            _response.end();
         }
-        _response.end();
     }
 })(P_3Server = exports.P_3Server || (exports.P_3Server = {}));
 //# sourceMappingURL=server.js.map

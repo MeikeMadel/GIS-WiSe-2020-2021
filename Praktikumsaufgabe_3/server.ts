@@ -101,9 +101,9 @@ export namespace P_3Server {
  
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("I hear voices!");
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request) {
+            _response.setHeader("content-type", "text/html; charset=utf-8"); 
+            _response.setHeader("Access-Control-Allow-Origin", "*");
             let parsedUrl: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             let parsedUrlPathname: string = parsedUrl.pathname;
             let queryData = parsedUrl.query;
@@ -149,8 +149,9 @@ export namespace P_3Server {
                     }
                 });
             }
+            _response.end();
         }
-        _response.end();
+        
     }
 
 }
