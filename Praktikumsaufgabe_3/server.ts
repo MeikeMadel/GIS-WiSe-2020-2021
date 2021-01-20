@@ -114,19 +114,17 @@ export namespace P_3Server {
                     if (response) {
                         console.log(response);
                         _response.write("Diese E-mail ist bereits vergeben");
-                        _response.end();
+                        _response.end(response);
                         
                     }
                     else {
                         console.log(response);
                         _response.write("Daten gespeichert");
                         storeData(parsedUrl.query);
-                        _response.end();
+                        _response.end(response);
                         
-                    }
-                    _response.end();
+                    }  
                 });   
-                _response.end();
             }
             else if (parsedUrlPathname == "/show") {
                 retriveData().then((response) => {
