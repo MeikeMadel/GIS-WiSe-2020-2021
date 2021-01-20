@@ -2,7 +2,7 @@
 var P_3Data;
 (function (P_3Data) {
     window.addEventListener("load", handleLoad);
-    let url = "http://localhost:8100"; //später Heroku server einsetzen
+    let url = "https://giswise20202021.herokuapp.com"; //später Heroku server einsetzen
     let page = document.body.id;
     function handleLoad() {
         switch (page) {

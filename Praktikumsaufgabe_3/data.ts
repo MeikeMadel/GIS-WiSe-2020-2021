@@ -1,7 +1,7 @@
 
 namespace P_3Data { 
     window.addEventListener("load", handleLoad);
-    let url: string = "http://localhost:8100"; //später Heroku server einsetzen
+    let url: string = "https://giswise20202021.herokuapp.com"; //später Heroku server einsetzen
     let page: string = document.body.id;
 
 
