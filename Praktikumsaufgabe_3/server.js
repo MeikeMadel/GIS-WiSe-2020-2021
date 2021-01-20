@@ -90,14 +90,16 @@ var P_3Server;
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
                         console.log(response);
-                        _response.write("Diese E-mail ist bereits vergeben");
-                        _response.end();
+                        _response.write("Diese E-mail ist bereits vergeben", function () {
+                            _response.end();
+                        });
                     }
                     else {
                         console.log(response);
-                        _response.write("Daten gespeichert");
+                        _response.write("Daten gespeichert", function () {
+                            _response.end();
+                        });
                         storeData(parsedUrl.query);
-                        _response.end();
                     }
                 });
             }
@@ -124,7 +126,6 @@ var P_3Server;
                 });
             }
         }
-        _response.end();
     }
 })(P_3Server = exports.P_3Server || (exports.P_3Server = {}));
 //# sourceMappingURL=server.js.map
