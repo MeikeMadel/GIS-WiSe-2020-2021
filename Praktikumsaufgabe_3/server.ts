@@ -119,10 +119,10 @@ export namespace P_3Server {
                     }
                     else {
                         console.log(response);
+                        storeData(parsedUrl.query);
                         _response.write("Daten gespeichert", function(): void {
                             _response.end();
                         });
-                        storeData(parsedUrl.query);
                     }  
                 });   
             }
@@ -150,7 +150,6 @@ export namespace P_3Server {
                 });
             }
         }
-        _response.end();
     }
 
 }
