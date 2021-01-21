@@ -78,9 +78,9 @@ var P_3Server;
     }
     function handleRequest(_request, _response) {
         console.log("I hear voices!");
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request) {
-            _response.setHeader("content-type", "text/html; charset=utf-8");
-            _response.setHeader("Access-Control-Allow-Origin", "*");
             let parsedUrl = Url.parse(_request.url, true);
             let parsedUrlPathname = parsedUrl.pathname;
             let queryData = parsedUrl.query;
@@ -91,9 +91,7 @@ var P_3Server;
                     if (response) {
                         console.log(response);
                         _response.write("Diese E-mail ist bereits vergeben");
-                        if (response != undefined) {
-                            _response.end();
-                        }
+                        _response.end();
                     }
                     else {
                         console.log(response);

@@ -101,9 +101,9 @@ export namespace P_3Server {
  
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("I hear voices!");
+        _response.setHeader("content-type", "text/html; charset=utf-8"); 
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request) {
-            _response.setHeader("content-type", "text/html; charset=utf-8"); 
-            _response.setHeader("Access-Control-Allow-Origin", "*");
             let parsedUrl: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             let parsedUrlPathname: string = parsedUrl.pathname;
             let queryData = parsedUrl.query;
@@ -113,18 +113,16 @@ export namespace P_3Server {
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
                         console.log(response);
-                        _response.write("Diese E-mail ist bereits vergeben");
-                        if (response != undefined) {
-                            _response.end();
-                        }
+                        _response.write("Diese E-mail ist bereits vergeben", function(): void {
+                            _response.end();  
+                        });  
                     }
                     else {
                         console.log(response);
-                        _response.write("Daten gespeichert");
-                        storeData(parsedUrl.query);
-                        if (response != undefined) {
+                        _response.write("Daten gespeichert", function(): void {
                             _response.end();
-                        }
+                        });
+                        storeData(parsedUrl.query);
                     }  
                 });   
             }
