@@ -128,6 +128,7 @@ var P_3Server;
                 });
             }
         }
+        _response.end();
     }
 })(P_3Server = exports.P_3Server || (exports.P_3Server = {}));
 //# sourceMappingURL=server.js.map
