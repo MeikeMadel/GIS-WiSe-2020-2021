@@ -91,13 +91,17 @@ var P_3Server;
                     if (response) {
                         console.log(response);
                         _response.write("Diese E-mail ist bereits vergeben");
-                        _response.end();
+                        if (response != undefined) {
+                            _response.end();
+                        }
                     }
                     else {
                         console.log(response);
                         _response.write("Daten gespeichert");
                         storeData(parsedUrl.query);
-                        _response.end();
+                        if (response != undefined) {
+                            _response.end();
+                        }
                     }
                 });
             }
@@ -123,7 +127,6 @@ var P_3Server;
                     }
                 });
             }
-            _response.end();
         }
     }
 })(P_3Server = exports.P_3Server || (exports.P_3Server = {}));
