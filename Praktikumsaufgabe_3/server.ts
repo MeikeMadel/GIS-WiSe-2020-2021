@@ -113,16 +113,18 @@ export namespace P_3Server {
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
                         console.log(response);
-                        _response.write("Diese E-mail ist bereits vergeben", function(): void {
+                        _response.write("Diese E-mail ist bereits vergeben");
+                        if (response != undefined) {
                             _response.end();
-                        });
+                        }
                     }
                     else {
                         console.log(response);
-                        _response.write("Daten gespeichert", function(): void {
-                            _response.end();
-                        });
+                        _response.write("Daten gespeichert");
                         storeData(parsedUrl.query);
+                        if (response != undefined) {
+                            _response.end();
+                        }
                     }  
                 });   
             }

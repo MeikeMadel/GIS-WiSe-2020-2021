@@ -90,16 +90,14 @@ var P_3Server;
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
                         console.log(response);
-                        _response.write("Diese E-mail ist bereits vergeben", function () {
-                            _response.end();
-                        });
+                        _response.write("Diese E-mail ist bereits vergeben");
+                        _response.end();
                     }
                     else {
                         console.log(response);
-                        _response.write("Daten gespeichert", function () {
-                            _response.end();
-                        });
+                        _response.write("Daten gespeichert");
                         storeData(parsedUrl.query);
+                        _response.end();
                     }
                 });
             }
