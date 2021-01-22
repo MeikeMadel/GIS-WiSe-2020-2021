@@ -145,11 +145,11 @@ export namespace P_3Server {
             else if (parsedUrlPathname == "/login") {
                 retriveCombi(emailQuery, passwortQuery).then((response) => {
                     if (response) {
-                        _response.write("Login erfolgreich");
+                        _response.write("Login erfolgreich.");
                         _response.end();
                     }
                     else {
-                        _response.write("E-mail und/oder Passwort nicht vorhanden, registriere dich");
+                        _response.write("E-mail und/oder Passwort nicht vorhanden, registriere dich.");
                         _response.end();
                     }
                 });
