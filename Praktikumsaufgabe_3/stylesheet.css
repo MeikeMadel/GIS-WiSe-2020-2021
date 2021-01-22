@@ -6,36 +6,76 @@ button{
   
 }
 
+header{
+    background-color: rgb(40, 82, 121);
+    margin-top: -8px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 30px;
+    border-bottom-left-radius: 500px;
+    border-bottom-right-radius: 500px;
+    padding: 0px 50px 15px 70px;
+    text-align: center;
+}
+
 body {
     background-color: lightsteelblue;
     margin-left: 50px;
     font-family: sans-serif; 
+    font-size: 20px;
+   
+}
+
+form {
+    margin-left: 450px;
+}
+
+#showDataButton {
+    margin-left: 480px;
+    font-size: 25px;
+}
+
+button:hover {
+    background-color: gray
+}
+
+div {
+    margin-left: 450px;
+    margin-right: 450px;
     font-size: 18px;
+    padding: 10px;
+    
 }
 
 
 input {
-    margin-top: 2px;
+    margin-top: 5px;
 }
 
 
 table {
-    background-color: gray;
+    background-color: rgb(243, 241, 240);
     text-align: center;
     color: white;
-   
 }
 
 td {
     color: white;
-    border-right: 2px solid black;
+    border: 2px dotted black;
     padding: 5px;
-    
 }
+
+a:hover {
+    color:cadetblue
+}
+
 
 a{
     text-decoration: none;
+    color:black;
 }
+
 h1{
-    font-size: 40px;
+    font-size: 60px;
+    color: white;
 }

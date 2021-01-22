@@ -12,7 +12,7 @@
             <nav>
                 <table>
                     <tr>
-                        <td><a  href="userDatenbank.html">User der Datenbank</a></td>
+                        <td><a  href="userDatenbank.html">User</a></td>
                         <td><a  href="index.html">Registrieren</a></td>
                     </tr>
                 </table>   
@@ -22,7 +22,7 @@
         </header>
         
         <main>
-          <form method="GET" id="logInFormular">
+          <form name= "login" method="GET" id="logInFormular">
 
             <label for="email">E-mail:</label>
             <input type="text" name="email" value=""><br>
@@ -30,7 +30,7 @@
             <label for="passwort">Passwort:</label>
             <input type="password" id="passwort" name="passwort" required><br>
 
-            <button type="submit" name="ButtonLogin" id="logInButton" value="login">Log In</button>   
+            <button type="submit" name="ButtonLogin" id="logInButton" value="login" onClick="this.disabled=true">Log In</button>   
           </form>
 
           <div id="loginAusgabe">

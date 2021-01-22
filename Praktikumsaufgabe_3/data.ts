@@ -1,7 +1,7 @@
 
 namespace P_3Data { 
     window.addEventListener("load", handleLoad);
-    let url: string = "https://giswise20202021.herokuapp.com"; //später Heroku server einsetzen
+    let url: string = "https://giswise20202021.herokuapp.com"; 
     let page: string = document.body.id;
 
 
@@ -34,6 +34,7 @@ namespace P_3Data {
                   let responseText: string = await response.text();
                   serverAntwort.appendChild(document.createTextNode(responseText));
                   divEmail.appendChild(serverAntwort);
+                  form.reset();
                }
                break;
 
@@ -50,9 +51,8 @@ namespace P_3Data {
                     _event.preventDefault();
                     url = url + "/show";
                     let response: Response = await fetch(url);
-                    let responseText: string = await response.text();
+                    let responseText = await response.text();
                     console.log(responseText);
-                    //let jsObject: string = JSON.stringify(responseText);
                     user.appendChild(document.createTextNode(responseText));
                     divUser.appendChild(user);
                 }
@@ -60,6 +60,7 @@ namespace P_3Data {
 
             case "loginPage":
                 console.log("Loginseite");
+               
 
                 let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("logInFormular");
 
@@ -70,7 +71,7 @@ namespace P_3Data {
                 let userLogin: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
                 
                 async function loginData(_event: Event): Promise<void> {
-                  _event.preventDefault();
+                  _event.preventDefault();  
                   let formData: FormData = new FormData(formular);
                   let query: URLSearchParams = new URLSearchParams(<any>formData);
                   url = url + "/login" + "?" + query.toString();
@@ -78,6 +79,7 @@ namespace P_3Data {
                   let responseText: string = await response.text();
                   userLogin.appendChild(document.createTextNode(responseText));
                   divLogin.appendChild(userLogin);
+                  formular.reset();
                 }
                 break;
         }

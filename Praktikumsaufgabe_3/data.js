@@ -2,7 +2,7 @@
 var P_3Data;
 (function (P_3Data) {
     window.addEventListener("load", handleLoad);
-    let url = "https://giswise20202021.herokuapp.com"; //später Heroku server einsetzen
+    let url = "https://giswise20202021.herokuapp.com";
     let page = document.body.id;
     function handleLoad() {
         switch (page) {
@@ -26,6 +26,7 @@ var P_3Data;
                     let responseText = await response.text();
                     serverAntwort.appendChild(document.createTextNode(responseText));
                     divEmail.appendChild(serverAntwort);
+                    form.reset();
                 }
                 break;
             case "userPage":
@@ -40,7 +41,6 @@ var P_3Data;
                     let response = await fetch(url);
                     let responseText = await response.text();
                     console.log(responseText);
-                    //let jsObject: string = JSON.stringify(responseText);
                     user.appendChild(document.createTextNode(responseText));
                     divUser.appendChild(user);
                 }
@@ -61,6 +61,7 @@ var P_3Data;
                     let responseText = await response.text();
                     userLogin.appendChild(document.createTextNode(responseText));
                     divLogin.appendChild(userLogin);
+                    formular.reset();
                 }
                 break;
         }

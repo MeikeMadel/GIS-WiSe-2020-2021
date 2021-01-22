@@ -45,7 +45,7 @@ var P_3Server;
     }
     async function retriveEmail(_email) {
         let findEmail = await dataFormular.countDocuments({ email: { $eq: _email } }, { limit: 1 });
-        if (findEmail != 0) {
+        if (findEmail == 1) {
             return true;
         }
         else {
@@ -69,10 +69,11 @@ var P_3Server;
                 { passwort: { $eq: _pass } }
             ]
         });
-        if (findCombi != 0) {
+        if (findCombi == 1) {
             return true;
         }
         else {
+            console.log(findCombi);
             return false;
         }
     }
@@ -89,17 +90,13 @@ var P_3Server;
             if (parsedUrlPathname == "/send") {
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
-                        console.log(response);
-                        _response.write("Diese E-mail ist bereits vergeben", function () {
-                            _response.end();
-                        });
+                        _response.write("Diese E-mail ist bereits vergeben, logge dich ein.");
+                        _response.end();
                     }
                     else {
-                        console.log(response);
                         storeData(parsedUrl.query);
-                        _response.write("Daten gespeichert", function () {
-                            _response.end();
-                        });
+                        _response.write("Erfolgreich registriert!");
+                        _response.end();
                     }
                 });
             }
@@ -107,7 +104,12 @@ var P_3Server;
                 retriveData().then((response) => {
                     let namenListe = "";
                     for (let i = 0; i < response.length; i++) {
-                        namenListe += JSON.stringify(response[i].fname + " " + response[i].lname) + "\n";
+                        if (i == response.length - 1) { //kein Komma am Ende, um besser zu formatieren
+                            namenListe += response[i].fname + " " + response[i].lname + "\n";
+                        }
+                        else {
+                            namenListe += response[i].fname + " " + response[i].lname + ", ";
+                        }
                     }
                     _response.write(namenListe);
                     _response.end();
@@ -116,11 +118,11 @@ var P_3Server;
             else if (parsedUrlPathname == "/login") {
                 retriveCombi(emailQuery, passwortQuery).then((response) => {
                     if (response) {
-                        _response.write("E-mail und Passwort vorhanden");
+                        _response.write("Login erfolgreich");
                         _response.end();
                     }
                     else {
-                        _response.write("Kombination ist nicht vorhanden, Registriere dich");
+                        _response.write("E-mail und/oder Passwort nicht vorhanden, registriere dich");
                         _response.end();
                     }
                 });

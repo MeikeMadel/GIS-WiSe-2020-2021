@@ -12,14 +12,12 @@
           <nav>
             <table>
               <tr>
-                <td><a  href="userDatenbank.html">User der Datenbank</a></li>
+                <td><a  href="userDatenbank.html">User</a></li>
                 <td><a  href="logIn.html">LogIn</a></li>
               </tr>
-            <table>   
-          <nav>
-
+            </table>   
+          </nav>
           <h1>Anmeldeformular</h1>
-
         </header>
         
         <main>
@@ -39,12 +37,10 @@
             <label for="passwort">Passwort:</label>
             <input type="password" id="passwort" name="passwort" required><br>
 
-            <button type="submit" name="button" id="sendData" value="send">Registrieren</button>
+            <button type="submit" name="button" id="sendData" value="send" onClick="this.disabled=true">Registrieren</button>
           </form>
 
-          <div id="emailVorhanden">
-
-          </div>
+          <div id="emailVorhanden"></div>
         </main>
     </body>
     
