@@ -18,36 +18,48 @@ var P_3Data;
                 buttonSenden.addEventListener("click", sendData);
                 let divEmail = document.getElementById("emailVorhanden");
                 let serverAntwort = document.createElement("p");
-                async function sendData(_event) {
-                    _event.preventDefault();
+                function checkForm() {
                     if (fname.value == "") {
                         alert("Vorname erforderlich");
                         location.reload();
+                        return false;
                     }
                     else if (lname.value == "") {
                         alert("Nachname erforderlich");
                         location.reload();
+                        return false;
                     }
                     else if (ort.value == "") {
                         alert("Wohnort erforderlich");
                         location.reload();
+                        return false;
                     }
                     else if (email.value == "") {
                         alert("Email erforderlich");
                         location.reload();
+                        return false;
                     }
                     else if (passwort.value == "") {
                         alert("Passwort erforderlich");
                         location.reload();
+                        return false;
                     }
-                    let formData = new FormData(form);
-                    let query = new URLSearchParams(formData);
-                    url = url + "/send" + "?" + query.toString();
-                    let response = await fetch(url);
-                    let responseText = await response.text();
-                    form.reset();
-                    serverAntwort.appendChild(document.createTextNode(responseText));
-                    divEmail.appendChild(serverAntwort);
+                    else {
+                        return true;
+                    }
+                }
+                async function sendData(_event) {
+                    _event.preventDefault();
+                    if (checkForm()) {
+                        let formData = new FormData(form);
+                        let query = new URLSearchParams(formData);
+                        url = url + "/send" + "?" + query.toString();
+                        let response = await fetch(url);
+                        let responseText = await response.text();
+                        form.reset();
+                        serverAntwort.appendChild(document.createTextNode(responseText));
+                        divEmail.appendChild(serverAntwort);
+                    }
                 }
                 break;
             case "userPage":
