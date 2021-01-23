@@ -21,7 +21,7 @@ var P_3Data;
                 async function sendData(_event) {
                     _event.preventDefault();
                     if (fname.value == "") {
-                        alert("Nachname erforderlich");
+                        alert("Vorname erforderlich");
                         location.reload();
                     }
                     else if (lname.value == "") {
