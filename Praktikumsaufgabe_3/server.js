@@ -44,7 +44,8 @@ var P_3Server;
         console.log("Listening");
     }
     async function retriveEmail(_email) {
-        let findEmail = await dataFormular.countDocuments({ email: { $eq: _email } }, { limit: 1 });
+        let emailLowerCase = _email.toLowerCase(); //keine neue email anlegen, falls am Anfang großgeschrieben wurde
+        let findEmail = await dataFormular.countDocuments({ email: { $eq: emailLowerCase } }, { limit: 1 });
         if (findEmail == 1) {
             return true;
         }
@@ -63,9 +64,10 @@ var P_3Server;
         return result;
     }
     async function retriveCombi(_email, _pass) {
+        let emailLowerCase = _email.toLowerCase();
         let findCombi = await dataFormular.countDocuments({
             $and: [
-                { email: { $eq: _email } },
+                { email: { $eq: emailLowerCase } },
                 { passwort: { $eq: _pass } }
             ]
         });
@@ -73,7 +75,6 @@ var P_3Server;
             return true;
         }
         else {
-            console.log(findCombi);
             return false;
         }
     }
@@ -87,6 +88,9 @@ var P_3Server;
             let queryData = parsedUrl.query;
             let emailQuery = queryData.email;
             let passwortQuery = queryData.passwort;
+            if (parsedUrlPathname == "/") {
+                _response.end();
+            }
             if (parsedUrlPathname == "/send") {
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
@@ -100,7 +104,7 @@ var P_3Server;
                     }
                 });
             }
-            else if (parsedUrlPathname == "/show") {
+            if (parsedUrlPathname == "/show") {
                 retriveData().then((response) => {
                     let namenListe = "";
                     for (let i = 0; i < response.length; i++) {
@@ -115,7 +119,7 @@ var P_3Server;
                     _response.end();
                 });
             }
-            else if (parsedUrlPathname == "/login") {
+            if (parsedUrlPathname == "/login") {
                 retriveCombi(emailQuery, passwortQuery).then((response) => {
                     if (response) {
                         _response.write("Login erfolgreich.");

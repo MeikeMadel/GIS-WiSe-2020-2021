@@ -2,6 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
+
 export namespace P_3Server {
 
     let nameDatenbank: string = "meineDatenbank";
@@ -31,8 +32,6 @@ export namespace P_3Server {
         default:
             console.log("Wähle lokal oder remote Datenbank");
     }
-    
-
 
     startServer(port);
     connectToDatabase(databaseUrl);
@@ -59,8 +58,9 @@ export namespace P_3Server {
         console.log("Listening");
     }
 
-    async function retriveEmail(_email: string | string[]): Promise<boolean> {
-        let findEmail: number = await dataFormular.countDocuments({email: {$eq: _email}}, {limit: 1});
+    async function retriveEmail(_email: string): Promise<boolean> {
+        let emailLowerCase: string = _email.toLowerCase(); //keine neue email anlegen, falls am Anfang großgeschrieben wurde
+        let findEmail: number = await dataFormular.countDocuments({email: {$eq: emailLowerCase}}, {limit: 1});
         if (findEmail == 1) {
             return true;
         }
@@ -83,10 +83,11 @@ export namespace P_3Server {
         return result;
     }
 
-    async function retriveCombi(_email: string | string[], _pass: string | string[]): Promise<boolean> {
+    async function retriveCombi(_email: string, _pass: string | string[]): Promise<boolean> {
+        let emailLowerCase: string = _email.toLowerCase();
         let findCombi: number = await dataFormular.countDocuments({
             $and: [
-                {email: {$eq: _email}}, 
+                {email: {$eq: emailLowerCase}}, 
                 {passwort: {$eq: _pass}}
             ]
         });
@@ -94,13 +95,10 @@ export namespace P_3Server {
             return true;
         }
         else {
-            console.log(findCombi);
             return false;
         }
     }
         
-    
-
  
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("I hear voices!");
@@ -110,8 +108,11 @@ export namespace P_3Server {
             let parsedUrl: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             let parsedUrlPathname: string = parsedUrl.pathname;
             let queryData = parsedUrl.query;
-            let emailQuery: string | string[] = queryData.email;
+            let emailQuery: string = <string> queryData.email;
             let passwortQuery: string | string[] = queryData.passwort;
+            if (parsedUrlPathname == "/") {
+                _response.end();
+            }
             if (parsedUrlPathname == "/send") {
                 retriveEmail(emailQuery).then((response) => {
                     if (response) {
@@ -125,7 +126,7 @@ export namespace P_3Server {
                     }  
                 });   
             }
-            else if (parsedUrlPathname == "/show") {
+            if (parsedUrlPathname == "/show") {
                 retriveData().then((response) => {
                     let namenListe: string = "";
                     for (let i: number = 0; i < response.length; i++) {
@@ -142,7 +143,7 @@ export namespace P_3Server {
                     _response.end();
                 });
             }
-            else if (parsedUrlPathname == "/login") {
+            if (parsedUrlPathname == "/login") {
                 retriveCombi(emailQuery, passwortQuery).then((response) => {
                     if (response) {
                         _response.write("Login erfolgreich.");
@@ -155,6 +156,8 @@ export namespace P_3Server {
                 });
             }
         }
+     
     }
+
 
 }

@@ -7,12 +7,17 @@ namespace P_3Data {
 
     function handleLoad(): void {
 
+        let fname: HTMLInputElement = <HTMLInputElement>document.getElementById("fname");
+        let lname: HTMLInputElement = <HTMLInputElement>document.getElementById("lname");
+        let ort: HTMLInputElement = <HTMLInputElement>document.getElementById("wohnort");
+        let email: HTMLInputElement = <HTMLInputElement>document.getElementById("email");
+        let passwort: HTMLInputElement = <HTMLInputElement>document.getElementById("passwort");
+
         switch (page) {
             case "anmeldungPage": 
                console.log("Anmeldungsseite");
 
                let form: HTMLFormElement = <HTMLFormElement>document.getElementById("formular");
-               form.addEventListener("change", handleChange);
 
                let buttonSenden: HTMLButtonElement = <HTMLButtonElement>document.getElementById("sendData");
                buttonSenden.addEventListener("click", sendData);
@@ -21,20 +26,36 @@ namespace P_3Data {
                let serverAntwort: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
 
 
-               function handleChange(_event: Event): void {
-                console.log(form.value);
-               }
-
                async function sendData(_event: Event): Promise<void> {
                   _event.preventDefault();
+                  if (fname.value == "") {
+                    alert("Nachname erforderlich");
+                    location.reload();
+                  }
+                  else if (lname.value == "") {
+                    alert("Nachname erforderlich");
+                    location.reload();
+                  }
+                  else if (ort.value == "") {
+                    alert("Wohnort erforderlich");
+                    location.reload();
+                  }
+                  else if (email.value == "") {
+                    alert("Email erforderlich");
+                    location.reload();
+                  }
+                  else if (passwort.value == "") {
+                    alert("Passwort erforderlich");
+                    location.reload();
+                  }
                   let formData: FormData = new FormData(form);
                   let query: URLSearchParams = new URLSearchParams(<any>formData);
                   url = url + "/send" + "?" + query.toString();
                   let response: Response = await fetch(url);
                   let responseText: string = await response.text();
-                  serverAntwort.appendChild(document.createTextNode(responseText));
-                  divEmail.appendChild(serverAntwort);
                   form.reset();
+                  serverAntwort.appendChild(document.createTextNode(responseText));
+                  divEmail.appendChild(serverAntwort);   
                }
                break;
 
@@ -59,9 +80,7 @@ namespace P_3Data {
                 break;
 
             case "loginPage":
-                console.log("Loginseite");
-               
-
+            
                 let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("logInFormular");
 
                 let buttonLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logInButton");
@@ -71,15 +90,23 @@ namespace P_3Data {
                 let userLogin: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
                 
                 async function loginData(_event: Event): Promise<void> {
-                  _event.preventDefault();  
+                  console.log("Loginseite");
+                  if (email.value == "") {
+                      alert("Email erforderlich");
+                      location.reload();
+                  }
+                  if (passwort.value == "") {
+                       alert("Passwort erforderlich");
+                       location.reload();
+                  }
                   let formData: FormData = new FormData(formular);
                   let query: URLSearchParams = new URLSearchParams(<any>formData);
                   url = url + "/login" + "?" + query.toString();
                   let response: Response = await fetch(url);
                   let responseText: string = await response.text();
+                  formular.reset();
                   userLogin.appendChild(document.createTextNode(responseText));
                   divLogin.appendChild(userLogin);
-                  formular.reset();
                 }
                 break;
         }
