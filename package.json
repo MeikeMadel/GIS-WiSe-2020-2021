@@ -8,7 +8,7 @@
     "mongodb": "^3.6.3"
   },
   "scripts": {
-    "start": "node Praktikumsaufgabe_3/server.js remote"
+    "start": "node Prüfungsaufgabe/server.js"
   },
   "repository": {
     "type": "git",

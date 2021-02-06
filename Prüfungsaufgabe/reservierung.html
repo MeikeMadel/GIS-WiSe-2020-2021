@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    <script type="text/javascript" src="reserv.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="Viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Reservierung</title>
+    </head>
+    <body id="reservierungPage">
+      <div class="wrapper">
+        <header>
+          <h1>Reservierung</h1>
+        </header>
+        <main>
+            <nav>
+              <button id="arikeluebersichtLink"><a href="artikelverleih.html">zurück zur Artikelübersicht</a></button>
+            </nav>
+          <form name="reserviern" method="GET" id="formular">
+            <label name="fname">Vorname:</label>
+            <input type="text" name="fname" id="fname" value=""><br>
+            <label name="lname">Nachname:</label>
+            <input type="text" name="lname" id="lname"  value=""><br>
+            <button type="submit" name="button" id="button" value="reservieren">Reservierung abschließen</button>
+          </form>
+          <p id="serverAntwort"></p>
+        </main>
+      </div>
+        
+    </body>
+    
+</html>
