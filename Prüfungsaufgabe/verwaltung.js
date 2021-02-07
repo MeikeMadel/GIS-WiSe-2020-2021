@@ -3,8 +3,8 @@ var AstAVerleih;
 (function (AstAVerleih) {
     window.addEventListener("load", handleLoad);
     async function handleLoad() {
-        url = url + "/verwaltung";
-        let response = await fetch(url);
+        AstAVerleih.url = AstAVerleih.url + "/verwaltung";
+        let response = await fetch(AstAVerleih.url);
         let responseText = await response.text();
         let jsonResponse = JSON.parse(responseText);
         for (let i = 0; i < jsonResponse.length; i++) {
@@ -47,20 +47,19 @@ var AstAVerleih;
             }
             divData.appendChild(div);
             async function handleClickAusleihen(_event) {
-                //An Datenbank senden, dass status von Artikel in ausgeliehen geändert wird, aber nur wenn auf reserviert
+                //An Datenbank senden, dass status von Artikel in ausgeliehen geändert wird, aber nur wenn reserviert
                 if (jsonResponse[i].status == "reserviert") {
-                    url = url + "/ausleihen" + "?" + "titel=" + titelArikel;
+                    AstAVerleih.url = AstAVerleih.url + "/ausleihen" + "?" + "titel=" + titelArikel;
                     location.reload();
-                    await fetch(url);
+                    await fetch(AstAVerleih.url);
                 }
             }
             async function handleClickFrei(_event) {
                 if (jsonResponse[i].status == "ausgeliehen") {
-                    url = url + "/frei" + "?" + "titel=" + titelArikel;
-                    location.reload(); //dass Name gleich entfernt wird 
-                    await fetch(url);
-                } //verhindern, dass was passiert, wenn Artikel eh schon frei ist oder reserviert, reservierte Artikel können nicht frei werden
-                //braucht nur den Titel um Artikel durch titel zu suchen und Status auf frei zu setzen und Name in leeren string zu ändern
+                    AstAVerleih.url = AstAVerleih.url + "/frei" + "?" + "titel=" + titelArikel;
+                    location.reload(); //dass Name gleich entfernt ist
+                    await fetch(AstAVerleih.url);
+                }
             }
             function mouseOver(_event) {
                 buttonFrei.setAttribute("class", "hoverFrei");

@@ -17,7 +17,6 @@ h1 {
 }
 
 h1:hover {
-
     color: rgb(84, 228, 84);
 }
 
@@ -352,7 +351,7 @@ input ~ button:hover {
     img ~ div {
         width: 90%;
         font-size: 20px;
-        margin-left: 13%; 
+        margin-left: 15%; 
         font-weight: normal; 
         letter-spacing: -1px;
     }

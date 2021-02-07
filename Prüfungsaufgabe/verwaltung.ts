@@ -50,7 +50,7 @@ namespace AstAVerleih {
        
             
             async function handleClickAusleihen(_event: Event): Promise<void> {
-                //An Datenbank senden, dass status von Artikel in ausgeliehen geändert wird, aber nur wenn auf reserviert
+                //An Datenbank senden, dass status von Artikel in ausgeliehen geändert wird, aber nur wenn reserviert
                 if (jsonResponse[i].status == "reserviert") {
                     url = url + "/ausleihen" + "?" + "titel=" + titelArikel;
                     location.reload();
@@ -61,11 +61,9 @@ namespace AstAVerleih {
             async function handleClickFrei(_event: Event): Promise<void> {
                 if (jsonResponse[i].status == "ausgeliehen") {
                     url = url + "/frei" + "?" + "titel=" + titelArikel;
-                    location.reload(); //dass Name gleich entfernt wird 
+                    location.reload(); //dass Name gleich entfernt ist
                     await fetch(url);
-                    
-                } //verhindern, dass was passiert, wenn Artikel eh schon frei ist oder reserviert, reservierte Artikel können nicht frei werden
-                //braucht nur den Titel um Artikel durch titel zu suchen und Status auf frei zu setzen und Name in leeren string zu ändern
+                }
             }
             
             function mouseOver(_event: Event): void {

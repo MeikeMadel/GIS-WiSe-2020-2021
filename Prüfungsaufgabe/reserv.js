@@ -34,9 +34,9 @@ var AstAVerleih;
             if (localStorage.ausgeliehen != undefined) {
                 let formData = new FormData(form);
                 let query = new URLSearchParams(formData);
-                url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
+                AstAVerleih.url = AstAVerleih.url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
                 localStorage.clear();
-                let response = await fetch(url);
+                let response = await fetch(AstAVerleih.url);
                 let responseText = await response.text();
                 serverAntwort.appendChild(document.createTextNode(responseText));
                 form.reset();

@@ -2,7 +2,7 @@
 namespace AstAVerleih {
 
     window.addEventListener("load", handleLoad);
-    let url: string = "http://localhost:8100";
+    export let url: string = "https://giswise20202021.herokuapp.com";
 
 
     export interface Artikel {
@@ -31,8 +31,8 @@ namespace AstAVerleih {
             let beschreibungText: HTMLParagraphElement = document.createElement("p");
             let status: HTMLParagraphElement = document.createElement("p");
             let gebuehrParagraph: HTMLParagraphElement = document.createElement("p");
-            divContent.appendChild(divArtikel);
             let titelName: string = jsonResponse[i].titel;
+            divContent.appendChild(divArtikel);
             bild.setAttribute("src", jsonResponse[i].bild);
             bild.setAttribute("alt", titelName);
             button.setAttribute("class", "buttonReservieren");
@@ -63,7 +63,7 @@ namespace AstAVerleih {
 
             async function handleAusleihen(_event: Event): Promise<void> {
                 countClick++;
-                if (countClick % 2 == 0) { //wenn 2x auf Artikel geklickt wird wieder entfernen von Summe und aus localStorage.ausgeliehen
+                if (countClick % 2 == 0) { //wenn 2x auf Artikel geklickt wird, wird wieder entfernt von Summe und aus localStorage.ausgeliehen
                     divArtikel.removeAttribute("class");
                     localStorage.ausgeliehen = String(localStorage.ausgeliehen).replace("&titel=" + titelName, "");
                     localStorage.addSumme = Number(localStorage.addSumme) - Number(gebuehr);

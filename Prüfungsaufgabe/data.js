@@ -2,11 +2,11 @@
 var AstAVerleih;
 (function (AstAVerleih) {
     window.addEventListener("load", handleLoad);
-    let url = "http://localhost:8100";
+    AstAVerleih.url = "https://giswise20202021.herokuapp.com";
     async function handleLoad() {
         localStorage.clear();
-        url = url + "/";
-        let response = await fetch(url);
+        AstAVerleih.url = AstAVerleih.url + "/";
+        let response = await fetch(AstAVerleih.url);
         let responseText = await response.text();
         let jsonResponse = JSON.parse(responseText);
         for (let i = 0; i < jsonResponse.length; i++) {
@@ -19,8 +19,8 @@ var AstAVerleih;
             let beschreibungText = document.createElement("p");
             let status = document.createElement("p");
             let gebuehrParagraph = document.createElement("p");
-            divContent.appendChild(divArtikel);
             let titelName = jsonResponse[i].titel;
+            divContent.appendChild(divArtikel);
             bild.setAttribute("src", jsonResponse[i].bild);
             bild.setAttribute("alt", titelName);
             button.setAttribute("class", "buttonReservieren");
@@ -50,7 +50,7 @@ var AstAVerleih;
             }
             async function handleAusleihen(_event) {
                 countClick++;
-                if (countClick % 2 == 0) { //wenn 2x auf Artikel geklickt wird wieder entfernen von Summe und aus localStorage.ausgeliehen
+                if (countClick % 2 == 0) { //wenn 2x auf Artikel geklickt wird, wird wieder entfernt von Summe und aus localStorage.ausgeliehen
                     divArtikel.removeAttribute("class");
                     localStorage.ausgeliehen = String(localStorage.ausgeliehen).replace("&titel=" + titelName, "");
                     localStorage.addSumme = Number(localStorage.addSumme) - Number(gebuehr);
