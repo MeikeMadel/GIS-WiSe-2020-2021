@@ -16,7 +16,6 @@ namespace AstAVerleih {
     }
     
     async function handleLoad(): Promise<void> {
-        localStorage.clear();
         url = url + "/";
         let response: Response = await fetch(url); 
         let responseText: string = await response.text();

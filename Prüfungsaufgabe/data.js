@@ -4,7 +4,6 @@ var AstAVerleih;
     window.addEventListener("load", handleLoad);
     let url = "https://giswise20202021.herokuapp.com";
     async function handleLoad() {
-        localStorage.clear();
         url = url + "/";
         let response = await fetch(url);
         let responseText = await response.text();

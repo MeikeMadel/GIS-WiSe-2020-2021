@@ -1,7 +1,7 @@
 
 namespace AstAVerleih {
     let url: string = "https://giswise20202021.herokuapp.com";
-    
+
     let fname: HTMLInputElement = <HTMLInputElement>document.getElementById("fname");
     let lname: HTMLInputElement = <HTMLInputElement>document.getElementById("lname");
     let email: HTMLInputElement = <HTMLInputElement>document.getElementById("email");
@@ -38,11 +38,11 @@ namespace AstAVerleih {
                 let formData: FormData = new FormData(form);
                 let query: URLSearchParams = new URLSearchParams(<any>formData);
                 url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
-                localStorage.clear();
                 let response: Response = await fetch(url);
                 let responseText: string = await response.text();
                 serverAntwort.appendChild(document.createTextNode(responseText));
                 form.reset();
+                localStorage.clear();
                 //Status von Objekt wird in Server auf reserviert geändert und Name Attribut wird Name eingetragen (sonst ist Name leerer String)
             }
             else {
