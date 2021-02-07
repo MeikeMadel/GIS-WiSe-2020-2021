@@ -251,6 +251,8 @@ input ~ button:hover {
 }
 
  nav ~ p {
+    margin-left: 50px;
+    margin-right: 50px;
     margin-top: 40px;
     color:  rgb(94, 99, 91);
     font-weight: bolder;
@@ -432,7 +434,7 @@ input ~ button:hover {
         height: 30px;
         margin-right: 20px;
         padding-top: 7px;
-        margin-left: 45%;
+        margin-left: 55%;
         margin-top: 40px;
         text-align: center;
         font-size: 20px;
