@@ -1,10 +1,8 @@
 namespace AstAVerleih {
 
     window.addEventListener("load", handleLoad);
-    let url: string = "http://localhost:8100";
-
- 
     
+
     async function handleLoad(): Promise<void> {
         url = url + "/verwaltung";
         let response: Response = await fetch(url);
@@ -26,7 +24,6 @@ namespace AstAVerleih {
             buttonFrei.appendChild(document.createTextNode("frei"));
             buttonAusg.addEventListener("click", handleClickAusleihen);
             buttonAusg.appendChild(document.createTextNode("ausgeliehen"));
-            //braucht keinen Eventlistener, weil es automatisch auf reserviert steht durch geschickte Daten von ArtikelVerleih seite
             buttonReserv.appendChild(document.createTextNode("reserviert"));
             buttonReserv.setAttribute("class", "styleButtonReserv");
             div.appendChild(titelElement);
