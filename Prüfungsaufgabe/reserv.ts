@@ -38,7 +38,7 @@ namespace AstAVerleih {
                 console.log(localStorage.ausgeliehen);
                 let formData: FormData = new FormData(form);
                 let query: URLSearchParams = new URLSearchParams(<any>formData);
-                url = url + "reservierung/send" + "?" + query.toString() + localStorage.ausgeliehen;
+                url = url + "/reservierung/send" + "?" + query.toString() + localStorage.ausgeliehen;
                 let response: Response = await fetch(url);
                 let responseText: string = await response.text();
                 serverAntwort.appendChild(document.createTextNode(responseText));
