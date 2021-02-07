@@ -84,8 +84,7 @@ namespace P_3Data {
                     _event.preventDefault();
                     url = url + "/show";
                     let response: Response = await fetch(url);
-                    let responseText = await response.text();
-                    console.log(responseText);
+                    let responseText: string = await response.text();
                     user.appendChild(document.createTextNode(responseText));
                     divUser.appendChild(user);
                 }

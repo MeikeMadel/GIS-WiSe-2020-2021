@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-    <script type="text/javascript" src="reserv.js" defer></script>
+    <script src="reserv.js" defer></script>
     <meta charset="UTF-8">
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
     <title>Reservierung</title>
     </head>
     <body id="reservierungPage">
-      <div class="wrapper">
         <header>
           <h1>Reservierung</h1>
         </header>
         <main>
-            <nav>
-              <button id="arikeluebersichtLink"><a href="artikelverleih.html">zurück zur Artikelübersicht</a></button>
-            </nav>
+          <nav>
+            <a href="artikelverleih.html"><div id="arikeluebersichtLink">zurück zur Artikelübersicht</div></a>
+          </nav>
+          <p>Der Asta-Verleih ist nur für Studierende der Hochschule Furtwangen möglich. Gib deine Hochschul-Email-Adresse zur Authentifizierung an.</p>
           <form name="reserviern" method="GET" id="formular">
-            <label name="fname">Vorname:</label>
-            <input type="text" name="fname" id="fname" value=""><br>
-            <label name="lname">Nachname:</label>
-            <input type="text" name="lname" id="lname"  value=""><br>
+            <label for="fname">Vorname:</label>
+            <input type="text" name="fname" id="fname" value="">
+            <label for="lname">Nachname:</label>
+            <input type="text" name="lname" id="lname"  value="">
+            <label for="email">E-mail:</label>
+            <input name="email" id ="email" type="email" >
             <button type="submit" name="button" id="button" value="reservieren">Reservierung abschließen</button>
           </form>
           <p id="serverAntwort"></p>
         </main>
-      </div>
         
     </body>
     

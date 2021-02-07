@@ -44,8 +44,6 @@ var AstaVerleih;
         return content;
     }
     async function sendData(_fname, _lname, _titel) {
-        console.log(_fname + _lname + _titel);
-        console.log(typeof _titel);
         if (typeof _titel === "string") { // wenn nur ein Artikel reserviert wird
             await dataArtikel.findOneAndUpdate({ "titel": { $eq: _titel } }, { $set: {
                     status: "reserviert",
@@ -64,7 +62,6 @@ var AstaVerleih;
                 });
             }
         }
-        // muss Artikel finden und Name und Status ändern
     }
     async function verwaltungContent() {
         let verwaltungData = await dataArtikel.find().toArray();
@@ -100,15 +97,15 @@ var AstaVerleih;
                 });
             }
             else if (parsedUrlPathname == "/send") {
-                console.log(titelQuery + fnameQuery + lnameQuery);
                 sendData(fnameQuery, lnameQuery, titelQuery);
                 if (typeof titelQuery === "string") {
                     _response.write("Dein Artikel wurde für dich reserviert!");
+                    _response.end();
                 }
                 else {
                     _response.write("Deine Artikel wurden für dich reserviert!");
+                    _response.end();
                 }
-                _response.end();
             }
             else if (parsedUrlPathname == "/verwaltung") {
                 verwaltungContent().then((response) => {

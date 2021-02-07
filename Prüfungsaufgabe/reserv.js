@@ -1,9 +1,9 @@
 "use strict";
 var AstAVerleih;
 (function (AstAVerleih) {
-    let url = "http://localhost:8100";
     let fname = document.getElementById("fname");
     let lname = document.getElementById("lname");
+    let email = document.getElementById("email");
     let form = document.getElementById("formular");
     let serverAntwort = document.getElementById("serverAntwort");
     let buttonSenden = document.getElementById("button");
@@ -16,6 +16,11 @@ var AstAVerleih;
         }
         else if (lname.value == "") {
             alert("Nachname erforderlich");
+            location.reload();
+            return false;
+        }
+        else if (email.value == "" || !email.value.endsWith("@hs-furtwangen.de")) {
+            alert("Es ist eine gültige Email-Adresse der Hochschule Furtwangen erforderlich"); //"gültig" durch Format, nicht dass überprüft wird, dass sie wirklich vorhanden ist
             location.reload();
             return false;
         }

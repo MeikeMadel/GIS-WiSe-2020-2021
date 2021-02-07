@@ -3,6 +3,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 
+
 export namespace AstaVerleih {
 
     interface Artikel {
@@ -40,7 +41,6 @@ export namespace AstaVerleih {
     function startServer (_port: number | string): void {
         let server: Http.Server = Http.createServer(); 
         console.log("Starting server on port: " + _port);
-
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(_port); 
@@ -54,7 +54,6 @@ export namespace AstaVerleih {
         console.log("Database connection", dataArtikel != undefined); //überprüfen, ob dataFormular einen Wert bekommen hat
     }
 
-
     function handleListen(): void {
         console.log("Listening");
     }
@@ -65,9 +64,7 @@ export namespace AstaVerleih {
       
     }
 
-    async function sendData(_fname: string, _lname: string, _titel: any): Promise<void> {
-        console.log(_fname + _lname + _titel);
-        console.log(typeof _titel);
+    async function sendData(_fname: string, _lname: string, _titel: string | Array<String>): Promise<void> {
         if (typeof _titel === "string") { // wenn nur ein Artikel reserviert wird
             await dataArtikel.findOneAndUpdate(
                 {"titel": {$eq: _titel}},
@@ -88,12 +85,8 @@ export namespace AstaVerleih {
                             lname: _lname
                         }
                     });
-
+                }
         }
-        
-        }
-       
-        // muss Artikel finden und Name und Status ändern
     }
 
     async function verwaltungContent(): Promise<Array<Artikel>> {
@@ -139,16 +132,15 @@ export namespace AstaVerleih {
                 });
             }
             else if (parsedUrlPathname == "/send") {
-                console.log(titelQuery +  fnameQuery + lnameQuery);
                 sendData(fnameQuery, lnameQuery, titelQuery);
                 if (typeof titelQuery === "string") {
-                    _response.write("Dein Artikel wurde für dich reserviert!");
+                     _response.write("Dein Artikel wurde für dich reserviert!");
+                     _response.end();
                 }
                 else {
                     _response.write("Deine Artikel wurden für dich reserviert!");
+                    _response.end();
                 }
-
-                _response.end();
             }
             else if (parsedUrlPathname == "/verwaltung") {
                 verwaltungContent().then((response) => {
@@ -156,7 +148,6 @@ export namespace AstaVerleih {
                     _response.write(stringData);
                     _response.end();
                 });
-
             }
             else if (parsedUrlPathname == "/verwaltung/ausleihen") {
                 changeStatus(titelQuery);

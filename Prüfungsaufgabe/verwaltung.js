@@ -2,7 +2,6 @@
 var AstAVerleih;
 (function (AstAVerleih) {
     window.addEventListener("load", handleLoad);
-    let url = "http://localhost:8100";
     async function handleLoad() {
         url = url + "/verwaltung";
         let response = await fetch(url);
@@ -24,7 +23,6 @@ var AstAVerleih;
             buttonFrei.appendChild(document.createTextNode("frei"));
             buttonAusg.addEventListener("click", handleClickAusleihen);
             buttonAusg.appendChild(document.createTextNode("ausgeliehen"));
-            //braucht keinen Eventlistener, weil es automatisch auf reserviert steht durch geschickte Daten von ArtikelVerleih seite
             buttonReserv.appendChild(document.createTextNode("reserviert"));
             buttonReserv.setAttribute("class", "styleButtonReserv");
             div.appendChild(titelElement);

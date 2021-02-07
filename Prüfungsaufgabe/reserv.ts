@@ -1,9 +1,10 @@
 
 namespace AstAVerleih {
-    let url: string = "http://localhost:8100";
+    
 
     let fname: HTMLInputElement = <HTMLInputElement>document.getElementById("fname");
     let lname: HTMLInputElement = <HTMLInputElement>document.getElementById("lname");
+    let email: HTMLInputElement = <HTMLInputElement>document.getElementById("email");
     let form: HTMLFormElement = <HTMLFormElement> document.getElementById("formular");
     let serverAntwort: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("serverAntwort");
     let buttonSenden: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
@@ -19,6 +20,11 @@ namespace AstAVerleih {
           alert("Nachname erforderlich");
           location.reload();
           return false;
+        } 
+        else if (email.value == "" || !email.value.endsWith("@hs-furtwangen.de")) {
+            alert("Es ist eine gültige Email-Adresse der Hochschule Furtwangen erforderlich"); //"gültig" durch Format, nicht dass überprüft wird, dass sie wirklich vorhanden ist
+            location.reload();
+            return false;
         }
         else {
             return true;

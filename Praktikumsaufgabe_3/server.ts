@@ -39,7 +39,6 @@ export namespace P_3Server {
     function startServer (_port: number | string): void {
         let server: Http.Server = Http.createServer(); 
         console.log("Starting server on port: " + _port);
-
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(_port); 
@@ -79,7 +78,7 @@ export namespace P_3Server {
                 {"$group": { "_id": { fname: "$fname", lname: "$lname" } } }
             ]
         ).toArray();
-        let result = name.map(({ _id}) => _id);
+        let result: Array<Artikel> = name.map(({ _id}) => _id);
         return result;
     }
 
@@ -136,8 +135,6 @@ export namespace P_3Server {
                         else {
                             namenListe += response[i].fname + " " + response[i].lname + ", "; 
                         }
-                        
-                        
                     }
                     _response.write(namenListe);
                     _response.end();

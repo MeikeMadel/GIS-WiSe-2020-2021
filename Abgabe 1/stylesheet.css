@@ -4,7 +4,6 @@ h1 {
     font-size: 200px;
     text-align: center;
     letter-spacing: -17px;
-    margin-top: 0px;
     transition: color 4s ease-in-out;
 }
 
@@ -578,8 +577,9 @@ td > img{
         border: 7px solid darkred;
         padding: 5px 5px 2px 5px;
     }
+    .felx-box{
+        display: flex;
+    }
 }
 
-.felx-box{
-    display: flex;
-}
+
