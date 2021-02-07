@@ -30,9 +30,10 @@ var AstAVerleih;
         }
     }
     async function sendData(_event) {
-        _event.preventDefault();
+        console.log(localStorage.ausgeliehen);
         if (checkForm()) {
             if (localStorage.ausgeliehen != undefined) {
+                console.log(localStorage.ausgeliehen);
                 let formData = new FormData(form);
                 let query = new URLSearchParams(formData);
                 url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;

@@ -32,9 +32,10 @@ namespace AstAVerleih {
     }
 
     async function sendData(_event: Event): Promise<void> {
-        _event.preventDefault();
+        console.log(localStorage.ausgeliehen);
         if (checkForm()) {
             if (localStorage.ausgeliehen != undefined) {
+                console.log(localStorage.ausgeliehen);
                 let formData: FormData = new FormData(form);
                 let query: URLSearchParams = new URLSearchParams(<any>formData);
                 url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
