@@ -151,9 +151,11 @@ export namespace AstaVerleih {
             }
             else if (parsedUrlPathname == "/verwaltung/ausleihen") {
                 changeStatus(titelQuery);
+                _response.end();
             }
             else if (parsedUrlPathname == "/verwaltung/frei") {
                 statusFrei(titelQuery);
+                _response.end();
             }
         }
         
