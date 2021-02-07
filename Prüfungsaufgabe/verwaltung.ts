@@ -4,7 +4,7 @@ namespace AstAVerleih {
     let url: string = "https://giswise20202021.herokuapp.com";
 
     async function handleLoad(): Promise<void> {
-        url = url + "/verwaltung";
+        url = url + "astaVerwaltung.html/verwaltung";
         let response: Response = await fetch(url);
         let responseText: string = await response.text();
         let jsonResponse: Array<Artikel> = JSON.parse(responseText);

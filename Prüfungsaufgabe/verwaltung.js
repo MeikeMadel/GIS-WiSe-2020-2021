@@ -4,7 +4,7 @@ var AstAVerleih;
     window.addEventListener("load", handleLoad);
     let url = "https://giswise20202021.herokuapp.com";
     async function handleLoad() {
-        url = url + "/verwaltung";
+        url = url + "astaVerwaltung.html/verwaltung";
         let response = await fetch(url);
         let responseText = await response.text();
         let jsonResponse = JSON.parse(responseText);
