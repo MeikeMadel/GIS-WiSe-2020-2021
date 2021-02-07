@@ -2,11 +2,11 @@
 var AstAVerleih;
 (function (AstAVerleih) {
     window.addEventListener("load", handleLoad);
-    AstAVerleih.url = "https://giswise20202021.herokuapp.com";
+    let url = "https://giswise20202021.herokuapp.com";
     async function handleLoad() {
         localStorage.clear();
-        AstAVerleih.url = AstAVerleih.url + "/";
-        let response = await fetch(AstAVerleih.url);
+        url = url + "/";
+        let response = await fetch(url);
         let responseText = await response.text();
         let jsonResponse = JSON.parse(responseText);
         for (let i = 0; i < jsonResponse.length; i++) {

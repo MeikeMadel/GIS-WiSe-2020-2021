@@ -135,11 +135,10 @@ export namespace AstaVerleih {
                 sendData(fnameQuery, lnameQuery, titelQuery);
                 if (typeof titelQuery === "string") {
                      _response.write("Dein Artikel wurde für dich reserviert!");
-                     
                 }
                 else {
                     _response.write("Deine Artikel wurden für dich reserviert!");
-                    
+
                 }
                 _response.end();
             }

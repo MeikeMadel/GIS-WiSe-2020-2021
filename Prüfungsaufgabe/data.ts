@@ -2,7 +2,7 @@
 namespace AstAVerleih {
 
     window.addEventListener("load", handleLoad);
-    export let url: string = "https://giswise20202021.herokuapp.com";
+    let url: string = "https://giswise20202021.herokuapp.com";
 
 
     export interface Artikel {

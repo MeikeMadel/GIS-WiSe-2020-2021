@@ -1,6 +1,7 @@
 "use strict";
 var AstAVerleih;
 (function (AstAVerleih) {
+    let url = "https://giswise20202021.herokuapp.com";
     let fname = document.getElementById("fname");
     let lname = document.getElementById("lname");
     let email = document.getElementById("email");
@@ -34,9 +35,9 @@ var AstAVerleih;
             if (localStorage.ausgeliehen != undefined) {
                 let formData = new FormData(form);
                 let query = new URLSearchParams(formData);
-                AstAVerleih.url = AstAVerleih.url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
+                url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
                 localStorage.clear();
-                let response = await fetch(AstAVerleih.url);
+                let response = await fetch(url);
                 let responseText = await response.text();
                 serverAntwort.appendChild(document.createTextNode(responseText));
                 form.reset();

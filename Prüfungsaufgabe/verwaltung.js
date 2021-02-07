@@ -2,9 +2,10 @@
 var AstAVerleih;
 (function (AstAVerleih) {
     window.addEventListener("load", handleLoad);
+    let url = "https://giswise20202021.herokuapp.com";
     async function handleLoad() {
-        AstAVerleih.url = AstAVerleih.url + "/verwaltung";
-        let response = await fetch(AstAVerleih.url);
+        url = url + "/verwaltung";
+        let response = await fetch(url);
         let responseText = await response.text();
         let jsonResponse = JSON.parse(responseText);
         for (let i = 0; i < jsonResponse.length; i++) {
@@ -49,16 +50,16 @@ var AstAVerleih;
             async function handleClickAusleihen(_event) {
                 //An Datenbank senden, dass status von Artikel in ausgeliehen geändert wird, aber nur wenn reserviert
                 if (jsonResponse[i].status == "reserviert") {
-                    AstAVerleih.url = AstAVerleih.url + "/ausleihen" + "?" + "titel=" + titelArikel;
+                    url = url + "/ausleihen" + "?" + "titel=" + titelArikel;
                     location.reload();
-                    await fetch(AstAVerleih.url);
+                    await fetch(url);
                 }
             }
             async function handleClickFrei(_event) {
                 if (jsonResponse[i].status == "ausgeliehen") {
-                    AstAVerleih.url = AstAVerleih.url + "/frei" + "?" + "titel=" + titelArikel;
+                    url = url + "/frei" + "?" + "titel=" + titelArikel;
                     location.reload(); //dass Name gleich entfernt ist
-                    await fetch(AstAVerleih.url);
+                    await fetch(url);
                 }
             }
             function mouseOver(_event) {

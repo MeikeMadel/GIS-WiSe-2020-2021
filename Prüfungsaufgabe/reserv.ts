@@ -1,7 +1,7 @@
 
 namespace AstAVerleih {
+    let url: string = "https://giswise20202021.herokuapp.com";
     
-
     let fname: HTMLInputElement = <HTMLInputElement>document.getElementById("fname");
     let lname: HTMLInputElement = <HTMLInputElement>document.getElementById("lname");
     let email: HTMLInputElement = <HTMLInputElement>document.getElementById("email");

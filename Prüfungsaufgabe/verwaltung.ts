@@ -1,7 +1,7 @@
 namespace AstAVerleih {
 
     window.addEventListener("load", handleLoad);
-    
+    let url: string = "https://giswise20202021.herokuapp.com";
 
     async function handleLoad(): Promise<void> {
         url = url + "/verwaltung";
