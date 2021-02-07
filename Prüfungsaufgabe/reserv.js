@@ -36,7 +36,7 @@ var AstAVerleih;
                 console.log(localStorage.ausgeliehen);
                 let formData = new FormData(form);
                 let query = new URLSearchParams(formData);
-                url = url + "/send" + "?" + query.toString() + localStorage.ausgeliehen;
+                url = url + "reservierung/send" + "?" + query.toString() + localStorage.ausgeliehen;
                 let response = await fetch(url);
                 let responseText = await response.text();
                 serverAntwort.appendChild(document.createTextNode(responseText));
