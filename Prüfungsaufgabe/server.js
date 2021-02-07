@@ -96,7 +96,7 @@ var AstaVerleih;
                     _response.end();
                 });
             }
-            else if (parsedUrlPathname == "/send") {
+            else if (parsedUrlPathname == "reservierung/send") {
                 sendData(fnameQuery, lnameQuery, titelQuery);
                 if (typeof titelQuery === "string") {
                     _response.write("Dein Artikel wurde für dich reserviert!");
