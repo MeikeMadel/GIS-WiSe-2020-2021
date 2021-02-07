@@ -131,7 +131,7 @@ export namespace AstaVerleih {
                     _response.end();
                 });
             }
-            else if (parsedUrlPathname == "reservierung.html/reservierung/send") {
+            else if (parsedUrlPathname == "/reservierung/send") {
                 sendData(fnameQuery, lnameQuery, titelQuery);
                 if (typeof titelQuery === "string") {
                      _response.write("Dein Artikel wurde für dich reserviert!");
@@ -144,18 +144,18 @@ export namespace AstaVerleih {
                 }
             
             }
-            else if (parsedUrlPathname == "astaVerwaltung.html/verwaltung") {
+            else if (parsedUrlPathname == "/verwaltung") {
                 verwaltungContent().then((response) => {
                     let stringData: string = JSON.stringify(response);
                     _response.write(stringData);
                     _response.end();
                 });
             }
-            else if (parsedUrlPathname == "astaVerwaltung.html/verwaltung/ausleihen") {
+            else if (parsedUrlPathname == "/verwaltung/ausleihen") {
                 changeStatus(titelQuery);
                 _response.end();
             }
-            else if (parsedUrlPathname == "astaVerwaltung.html/verwaltung/frei") {
+            else if (parsedUrlPathname == "/verwaltung/frei") {
                 statusFrei(titelQuery);
                 _response.end();
             }
