@@ -30,7 +30,7 @@ var AstAVerleih;
         }
     }
     async function sendData(_event) {
-        console.log(localStorage.ausgeliehen);
+        _event.preventDefault();
         if (checkForm()) {
             if (localStorage.ausgeliehen != undefined) {
                 console.log(localStorage.ausgeliehen);

@@ -32,7 +32,7 @@ namespace AstAVerleih {
     }
 
     async function sendData(_event: Event): Promise<void> {
-        console.log(localStorage.ausgeliehen);
+        _event.preventDefault();
         if (checkForm()) {
             if (localStorage.ausgeliehen != undefined) {
                 console.log(localStorage.ausgeliehen);
